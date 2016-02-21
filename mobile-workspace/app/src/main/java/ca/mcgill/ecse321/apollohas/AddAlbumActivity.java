@@ -6,49 +6,75 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import ca.mcgill.ecse321.ApolloHAS.model.Album;
 import ca.mcgill.ecse321.ApolloHAS.model.Song;
 import ca.mcgill.ecse321.ApolloHAS.model.Artist;
 import ca.mcgill.ecse321.ApolloHAS.model.HAS;
+import ca.mcgill.ecse321.ApolloHAS.controller.*;
 
 public class AddAlbumActivity extends AppCompatActivity {
 
-    private HashMap<Integer, Album> album;
-    private HashMap<Integer, Song> song;
-    private HashMap<Integer, Artist> artist;
+    private ArrayList<Album> albums;
+    private HashMap<Integer, Song> songs;
+    private HashMap<Integer, Artist> artists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_album);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
-    public void createAlbum(View v) {
+//    private void refreshData() {
+//        //Initialize the data in the participant spinner
+//        HAS has = HAS.getInstance();
+//        Spinner spinnerAlbum = (Spinner) findViewById(R.id.albumspinner);
+//        ArrayAdapter<CharSequence> albumAdapter = new
+//                ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
+//        albumAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        this.albums = new HashMap<Integer, Album>();
+//
+//        int i = 0;
+//
+//        for (Iterator<Album> albums = has.getAlbum().iterator(); albums.hasNext(); i++) {
+//            Album album = albums.next();
+//            albumAdapter.add(album.getName());
+//            this.albums.put(i, album);
+//            //this.participants.put(p.getName(), p);
+//        }
+//        spinnerAlbum.setAdapter(albumAdapter);
+//    }
+
+
+    public void addAlbum(View v) {
         TextView tvAlbumName = (TextView) findViewById(R.id.album_name);
+        String albumName = tvAlbumName.getText().toString();
         TextView tvArtistName = (TextView) findViewById(R.id.artist_name);
+
+        TextView tvSongNum = (TextView) findViewById(R.id.number_songs);
+
         TextView tvReleaseDate = (TextView) findViewById(R.id.release_date);
+        Date releaseDate = unbundleDateBundle(getDateFromLabel(tvReleaseDate.getText()));
 
+        ApolloHASAlbumController newAlbum = new ApolloHASAlbumController(albumName,tvReleaseDate.toString(), tvArtistName.toString(),tvSongNum.toString());
 
-        Date eventDate = unbundleDateBundle(getDateFromLabel(tvReleaseDate.getText()));
+        //albums.add(newAlbum);
 
     }
+
+    public void addSong2Album(View v) {
+
+    }
+
+
 
     public void showDatePickerDialog(View v) {
         TextView tf = (TextView) v;

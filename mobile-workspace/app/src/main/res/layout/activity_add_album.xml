@@ -121,4 +121,24 @@
         android:layout_alignParentEnd="true"
         android:onClick="showDatePickerDialog" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Album"
+        android:id="@+id/createAlbum"
+        android:layout_marginTop="87dp"
+        android:layout_below="@+id/set_date"
+        android:layout_alignRight="@+id/set_date"
+        android:layout_alignEnd="@+id/set_date"
+        android:onClick="addAlbum"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/albumspinner"
+        android:layout_below="@+id/createAlbum"
+        android:layout_toLeftOf="@+id/set_date"
+        android:layout_toStartOf="@+id/set_date"
+        android:spinnerMode="dropdown" />
+
 </RelativeLayout>
