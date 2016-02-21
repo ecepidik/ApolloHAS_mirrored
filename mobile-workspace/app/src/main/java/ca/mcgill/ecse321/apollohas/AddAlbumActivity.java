@@ -9,13 +9,18 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.sql.Date;
-import java.sql.Time;
 import java.util.HashMap;
 
+import ca.mcgill.ecse321.ApolloHAS.model.Album;
+import ca.mcgill.ecse321.ApolloHAS.model.Song;
+import ca.mcgill.ecse321.ApolloHAS.model.Artist;
+import ca.mcgill.ecse321.ApolloHAS.model.HAS;
 
 public class AddAlbumActivity extends AppCompatActivity {
 
     private HashMap<Integer, Album> album;
+    private HashMap<Integer, Song> song;
+    private HashMap<Integer, Artist> artist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +47,6 @@ public class AddAlbumActivity extends AppCompatActivity {
 
 
         Date eventDate = unbundleDateBundle(getDateFromLabel(tvReleaseDate.getText()));
-
-        HAS controller = new HAS();
 
     }
 
