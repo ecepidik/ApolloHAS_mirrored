@@ -1,3 +1,5 @@
+namespace ca.mcgill.ecse321.apolloHAS.model;
+
 class Song {
   name;
   int duration;
@@ -43,6 +45,7 @@ class HAS {
   1 -> * Song song;
   1 -> * Album album;
   1 -> * Playlist playlist;
+  1 -> * Artist artist;
 }
 
 //$?[End_of_model]$?

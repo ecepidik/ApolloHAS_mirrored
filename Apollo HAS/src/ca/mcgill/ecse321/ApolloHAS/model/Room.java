@@ -1,10 +1,10 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
+package ca.mcgill.ecse321.ApolloHAS.model;
 
-
-// line 26 "HAS_model.ump"
-// line 65 "HAS_model.ump"
+// line 28 "../../../../../HAS_model.ump"
+// line 68 "../../../../../HAS_model.ump"
 public class Room
 {
 

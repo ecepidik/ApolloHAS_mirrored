@@ -1,10 +1,10 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
+package ca.mcgill.ecse321.ApolloHAS.model;
 
-
-// line 32 "HAS_model.ump"
-// line 70 "HAS_model.ump"
+// line 34 "../../../../../HAS_model.ump"
+// line 73 "../../../../../HAS_model.ump"
 public class Player
 {
 

@@ -1,10 +1,10 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
+package ca.mcgill.ecse321.ApolloHAS.model;
 
-
-// line 1 "HAS_model.ump"
-// line 50 "HAS_model.ump"
+// line 3 "../../../../../HAS_model.ump"
+// line 53 "../../../../../HAS_model.ump"
 public class Song
 {
 

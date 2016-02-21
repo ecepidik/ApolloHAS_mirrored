@@ -1,12 +1,12 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
-
+package ca.mcgill.ecse321.ApolloHAS.model;
 import java.util.*;
 import java.sql.Date;
 
-// line 39 "HAS_model.ump"
-// line 75 "HAS_model.ump"
+// line 41 "../../../../../HAS_model.ump"
+// line 78 "../../../../../HAS_model.ump"
 public class HAS
 {
 
@@ -26,6 +26,7 @@ public class HAS
   private List<Song> song;
   private List<Album> album;
   private List<Playlist> playlist;
+  private List<Artist> artist;
 
   //------------------------
   // CONSTRUCTOR
@@ -38,6 +39,7 @@ public class HAS
     song = new ArrayList<Song>();
     album = new ArrayList<Album>();
     playlist = new ArrayList<Playlist>();
+    artist = new ArrayList<Artist>();
   }
 
   public static HAS getInstance()
@@ -200,6 +202,36 @@ public class HAS
   public int indexOfPlaylist(Playlist aPlaylist)
   {
     int index = playlist.indexOf(aPlaylist);
+    return index;
+  }
+
+  public Artist getArtist(int index)
+  {
+    Artist aArtist = artist.get(index);
+    return aArtist;
+  }
+
+  public List<Artist> getArtist()
+  {
+    List<Artist> newArtist = Collections.unmodifiableList(artist);
+    return newArtist;
+  }
+
+  public int numberOfArtist()
+  {
+    int number = artist.size();
+    return number;
+  }
+
+  public boolean hasArtist()
+  {
+    boolean has = artist.size() > 0;
+    return has;
+  }
+
+  public int indexOfArtist(Artist aArtist)
+  {
+    int index = artist.indexOf(aArtist);
     return index;
   }
 
@@ -488,6 +520,63 @@ public class HAS
     return wasAdded;
   }
 
+  public static int minimumNumberOfArtist()
+  {
+    return 0;
+  }
+
+  public boolean addArtist(Artist aArtist)
+  {
+    boolean wasAdded = false;
+    if (artist.contains(aArtist)) { return false; }
+    artist.add(aArtist);
+    wasAdded = true;
+    return wasAdded;
+  }
+
+  public boolean removeArtist(Artist aArtist)
+  {
+    boolean wasRemoved = false;
+    if (artist.contains(aArtist))
+    {
+      artist.remove(aArtist);
+      wasRemoved = true;
+    }
+    return wasRemoved;
+  }
+
+  public boolean addArtistAt(Artist aArtist, int index)
+  {  
+    boolean wasAdded = false;
+    if(addArtist(aArtist))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfArtist()) { index = numberOfArtist() - 1; }
+      artist.remove(aArtist);
+      artist.add(index, aArtist);
+      wasAdded = true;
+    }
+    return wasAdded;
+  }
+
+  public boolean addOrMoveArtistAt(Artist aArtist, int index)
+  {
+    boolean wasAdded = false;
+    if(artist.contains(aArtist))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfArtist()) { index = numberOfArtist() - 1; }
+      artist.remove(aArtist);
+      artist.add(index, aArtist);
+      wasAdded = true;
+    } 
+    else 
+    {
+      wasAdded = addArtistAt(aArtist, index);
+    }
+    return wasAdded;
+  }
+
   public void delete()
   {
     player.clear();
@@ -495,6 +584,7 @@ public class HAS
     song.clear();
     album.clear();
     playlist.clear();
+    artist.clear();
   }
 
 }

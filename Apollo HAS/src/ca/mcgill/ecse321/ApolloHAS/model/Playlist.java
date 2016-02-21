@@ -1,41 +1,32 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
-
-import java.sql.Date;
+package ca.mcgill.ecse321.ApolloHAS.model;
 import java.util.*;
 
-// line 14 "HAS_model.ump"
-// line 60 "HAS_model.ump"
-public class Album
+// line 22 "../../../../../HAS_model.ump"
+// line 84 "../../../../../HAS_model.ump"
+public class Playlist
 {
 
   //------------------------
   // MEMBER VARIABLES
   //------------------------
 
-  //Album Attributes
+  //Playlist Attributes
   private String name;
-  private Date date;
 
-  //Album Associations
+  //Playlist Associations
   private List<Song> song;
-  private Artist artist;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Album(String aName, Date aDate, Artist aArtist)
+  public Playlist(String aName)
   {
     name = aName;
-    date = aDate;
     song = new ArrayList<Song>();
-    boolean didAddArtist = setArtist(aArtist);
-    if (!didAddArtist)
-    {
-      throw new RuntimeException("Unable to create album due to artist");
-    }
   }
 
   //------------------------
@@ -50,22 +41,9 @@ public class Album
     return wasSet;
   }
 
-  public boolean setDate(Date aDate)
-  {
-    boolean wasSet = false;
-    date = aDate;
-    wasSet = true;
-    return wasSet;
-  }
-
   public String getName()
   {
     return name;
-  }
-
-  public Date getDate()
-  {
-    return date;
   }
 
   public Song getSong(int index)
@@ -96,11 +74,6 @@ public class Album
   {
     int index = song.indexOf(aSong);
     return index;
-  }
-
-  public Artist getArtist()
-  {
-    return artist;
   }
 
   public static int minimumNumberOfSong()
@@ -160,31 +133,9 @@ public class Album
     return wasAdded;
   }
 
-  public boolean setArtist(Artist aArtist)
-  {
-    boolean wasSet = false;
-    if (aArtist == null)
-    {
-      return wasSet;
-    }
-
-    Artist existingArtist = artist;
-    artist = aArtist;
-    if (existingArtist != null && !existingArtist.equals(aArtist))
-    {
-      existingArtist.removeAlbum(this);
-    }
-    artist.addAlbum(this);
-    wasSet = true;
-    return wasSet;
-  }
-
   public void delete()
   {
     song.clear();
-    Artist placeholderArtist = artist;
-    this.artist = null;
-    placeholderArtist.removeAlbum(this);
   }
 
 
@@ -192,9 +143,7 @@ public class Album
   {
 	  String outputString = "";
     return super.toString() + "["+
-            "name" + ":" + getName()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "date" + "=" + (getDate() != null ? !getDate().equals(this)  ? getDate().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
-            "  " + "artist = "+(getArtist()!=null?Integer.toHexString(System.identityHashCode(getArtist())):"null")
+            "name" + ":" + getName()+ "]"
      + outputString;
   }
 }
