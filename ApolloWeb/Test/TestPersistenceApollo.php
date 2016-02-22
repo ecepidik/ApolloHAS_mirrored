@@ -11,7 +11,7 @@ class TestPersistenceApollo extends PHPUnit_Framework_TestCase {
 	
 	public function testPersistence () {
 		$hs = HAS::getInstance();
-		$album = new Album("Crazy in Love", 2014-10-07, "Beyoncé");
+		$album = new Album("Crazy in Love", "2014-10-07", "Beyoncé");
 		
 		$this->pm->writeDataToStore($hs);
 		
