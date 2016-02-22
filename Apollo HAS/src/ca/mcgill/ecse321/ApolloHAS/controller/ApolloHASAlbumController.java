@@ -5,7 +5,10 @@ import java.sql.Date;
 import ca.mcgill.ecse321.ApolloHAS.model.Album;
 import ca.mcgill.ecse321.ApolloHAS.model.Artist;
 import ca.mcgill.ecse321.ApolloHAS.model.HAS;
+import ca.mcgill.ecse321.ApolloHAS.model.Player;
+import ca.mcgill.ecse321.ApolloHAS.model.Song;
 import ca.mcgill.ecse321.ApolloHAS.persistence.PersistenceXStream;
+import ca.mcgill.ecse321.ApolloHAS.controller.InvalidInputException;
 
 public class ApolloHASAlbumController {
 	
@@ -13,6 +16,9 @@ public class ApolloHASAlbumController {
 	}
 	
 	public Artist createArtist(String name) {
+//		if (name == null || name.trim().length() == 0)
+//			throw new InvalidInputException("Artist name cannot be empty!");
+//		
 		Artist artist = new Artist(name);
 		HAS manager = HAS.getInstance();
 		manager.addArtist(artist);
@@ -21,7 +27,41 @@ public class ApolloHASAlbumController {
 		return artist;
 	}
 	
-	public Album createAlbum(String name, Date date, Artist artist) {
+	public void createSong(String name, int duration, String genre, int trackNum, Artist artist) throws InvalidInputException{
+		String error = "";
+		if(name == null || name.trim().length() == 0)
+			error = error + "Song name cannot be empty! ";
+		if(duration < 0)
+			error = error + "Duration is not a valid input! ";
+		if(name == null || genre.trim().length() == 0)
+			error = error + "Genre cannot be empty! ";
+		if(artist == null)
+			error = error + "Artist cannot be empty! ";
+		if(trackNum < 0)
+			error = error + "Track number is not a valid input! ";
+		error = error.trim();
+		if(error.length() > 0)
+			throw new InvalidInputException(error);
+		
+		Song song = new Song(name, duration, genre, trackNum, artist);
+		HAS manager = HAS.getInstance();
+		manager.addSong(song);
+		PersistenceXStream.saveToXMLwithXStream(manager);
+		
+	}
+	
+	public Album createAlbum(String name, Date date, Artist artist) throws InvalidInputException {
+		String error = "";
+		if(name == null || name.trim().length() == 0)
+			error = error + "Album name cannot be empty! ";
+		if(date == null)
+			error = error + "Release date cannot be empty! ";
+		if(artist == null)
+			error = error + "Artist cannot be empty! ";
+		error = error.trim();
+		if(error.length() > 0)
+			throw new InvalidInputException(error);
+		
 		Album album = new Album(name, date, artist);
 		HAS manager = HAS.getInstance();
 		manager.addAlbum(album);
@@ -29,6 +69,29 @@ public class ApolloHASAlbumController {
 		
 		return album;
 	}	
+	
+	public void addSongsToAlbum(Song song, Album album) //throws InvalidInputException
+	{
+		HAS manager = HAS.getInstance();
+		
+//		String error = "";
+//		if(song == null)
+//			error = error + "Song needs to be selected for registration! ";
+//		else if(!manager.getSong().contains(song))
+//			error = error + "Album does not exist! ";
+//		if(album == null)
+//			error = error + "Album needs to be selected for registration!";
+//		else if(!manager.getAlbum().contains(album))
+//			error = error + "Album does not exist!";
+//		error = error.trim();
+//		if(error.length() > 0)
+//			throw new  InvalidInputException(error);
+		
+		Player p = new Player(song, null, album, null);
+		manager.addPlayer(p);
+		PersistenceXStream.saveToXMLwithXStream(manager);
+	}
+	
 }
 	
 //	Album album;
