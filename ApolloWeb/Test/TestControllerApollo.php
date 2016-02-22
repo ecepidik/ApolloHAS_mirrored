@@ -14,9 +14,9 @@ class TestControllerApollo extends PHPUnit_Framework_TestCase {
 	protected function setUp() {
 		$this->c = new controller();
 		$this->pm = new PersistenceApollo();
-		$this->hm = $this->pm->loadDataFromStore();
-		$this->hm->delete();
-		$this->pm->writeDataToStore($this->hm);
+		$this->hs = $this->pm->loadDataFromStore();
+		$this->hs->delete();
+		$this->pm->writeDataToStore($this->hs);
 	}
 	
 	protected function tearDown() {
@@ -27,7 +27,7 @@ class TestControllerApollo extends PHPUnit_Framework_TestCase {
 		
 		$name = "Crazy in Love";
 		$date = "2014-10-07";
-		$artist = "Beyoncé";
+		$artist = new Artist("Beyoncé");
 		
 		try {
 			$this->c->createAlbum($name, $date, $artist);
