@@ -7,4 +7,5 @@
     <string name="release_date">mm.dd.yyyy</string>
     <string name="newAlbum_button">Add Album</string>
     <string name="title_activity_add_song_to_album">AddSongToAlbum</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>
