@@ -1,5 +1,6 @@
 package ca.mcgill.ecse321.apollohas;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -26,7 +28,6 @@ import ca.mcgill.ecse321.ApolloHAS.controller.*;
 public class AddAlbumActivity extends AppCompatActivity {
 
     private HashMap<Integer, Album> albums;
-    private HashMap<Integer, Song> songs;
     private HashMap<Integer, Artist> artists;
 
     @Override
@@ -34,18 +35,6 @@ public class AddAlbumActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_album);
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-//        refreshData();
     }
 
 
@@ -110,9 +99,22 @@ public class AddAlbumActivity extends AppCompatActivity {
         TextView tvReleaseDate = (TextView) findViewById(R.id.release_date);
         Date releaseDate = unbundleDateBundle(getDateFromLabel(tvReleaseDate.getText()));
 
-        hasc.createAlbum(albumName, releaseDate, artist);
+        TextView errorMessage = (TextView) findViewById(R.id.error);
+        errorMessage.setText("");
+        try {
+            hasc.createAlbum(albumName, releaseDate, artist);
+            goAddSongToAlbumPage(v);
+        } catch (InvalidInputException e) {
+            errorMessage.setText(e.getMessage());
+        }
         refreshData();
     }
+
+    public void goAddSongToAlbumPage(View v) {
+        Button button =(Button) v;
+        startActivity(new Intent(getApplicationContext(), AddSongToAlbum.class));
+    }
+
 
     public void showDatePickerDialog(View v) {
         TextView tf = (TextView) v;
@@ -123,6 +125,7 @@ public class AddAlbumActivity extends AppCompatActivity {
         newFragment.setArguments(args);
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
+
     private Bundle getDateFromLabel(CharSequence text) {
         Bundle rtn = new Bundle();
         String comps[] = text.toString().split("-");
