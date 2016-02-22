@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -27,21 +28,32 @@ import ca.mcgill.ecse321.ApolloHAS.model.Song;
 public class AddSongToAlbum extends AppCompatActivity {
 
     private HashMap<Integer, Song> songs;
+    private ArrayList<Song> albumSongs;
+    private Artist artist;
+    private Album album;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_add_song_to_album);
+        Artist artist = (Artist)getIntent().getSerializableExtra(AddAlbumActivity.SER_KEY);
+        Album album = (Album)getIntent().getSerializableExtra(AddAlbumActivity.SER_KEY);
+        this.artist = artist;
+        this.album = album;
     }
 
     private void refreshData() {
         HAS manager = HAS.getInstance();
+
+        ApolloHASAlbumController ac = new ApolloHASAlbumController();
 
         this.songs = new HashMap<Integer, Song>();
         int i = 0;
         for (Iterator<Song> songs = manager.getSong().iterator(); songs.hasNext(); i++) {
             Song song = songs.next();
             this.songs.put(i, song);
+            ac.addSongsToAlbum(song, this.album);
+
         }
     }
 
@@ -82,17 +94,9 @@ public class AddSongToAlbum extends AppCompatActivity {
         TextView tvTrackNumber = (TextView) findViewById(R.id.track_number);
         int trackNumber = Integer.parseInt(tvTrackNumber.getText().toString());
 
-        TextView tvSongArtistName = (TextView) findViewById(R.id.song_artist_name);
-        String SongArtistName = tvSongArtistName.toString();
-        Artist artist = hasc.createArtist(SongArtistName);
-
         TextView errorMessage = (TextView) findViewById(R.id.error);
         errorMessage.setText("");
-        try {
-            hasc.createSong(songName, duration, genre, trackNumber, artist);
-        } catch (InvalidInputException e) {
-            errorMessage.setText(e.getMessage());
-        }
+        hasc.createSong(songName, duration, genre, trackNumber, artist);
         refreshData();
     }
 

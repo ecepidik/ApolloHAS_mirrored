@@ -27,26 +27,28 @@ public class ApolloHASAlbumController {
 		return artist;
 	}
 	
-	public void createSong(String name, int duration, String genre, int trackNum, Artist artist) throws InvalidInputException{
-		String error = "";
-		if(name == null || name.trim().length() == 0)
-			error = error + "Song name cannot be empty! ";
-		if(duration < 0)
-			error = error + "Duration is not a valid input! ";
-		if(name == null || genre.trim().length() == 0)
-			error = error + "Genre cannot be empty! ";
-		if(artist == null)
-			error = error + "Artist cannot be empty! ";
-		if(trackNum < 0)
-			error = error + "Track number is not a valid input! ";
-		error = error.trim();
-		if(error.length() > 0)
-			throw new InvalidInputException(error);
+	public Song createSong(String name, int duration, String genre, int trackNum, Artist artist) { //throws InvalidInputException{
+//		String error = "";
+//		if(name == null || name.trim().length() == 0)
+//			error = error + "Song name cannot be empty! ";
+//		if(duration < 0)
+//			error = error + "Duration is not a valid input! ";
+//		if(name == null || genre.trim().length() == 0)
+//			error = error + "Genre cannot be empty! ";
+//		if(artist == null)
+//			error = error + "Artist cannot be empty! ";
+//		if(trackNum < 0)
+//			error = error + "Track number is not a valid input! ";
+//		error = error.trim();
+//		if(error.length() > 0)
+//			throw new InvalidInputException(error);
 		
 		Song song = new Song(name, duration, genre, trackNum, artist);
 		HAS manager = HAS.getInstance();
 		manager.addSong(song);
 		PersistenceXStream.saveToXMLwithXStream(manager);
+		
+		return song;
 		
 	}
 	

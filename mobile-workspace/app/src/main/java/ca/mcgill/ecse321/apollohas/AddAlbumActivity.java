@@ -1,6 +1,7 @@
 package ca.mcgill.ecse321.apollohas;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +28,8 @@ import ca.mcgill.ecse321.ApolloHAS.model.HAS;
 import ca.mcgill.ecse321.ApolloHAS.controller.*;
 
 public class AddAlbumActivity extends AppCompatActivity {
+
+    public  final static String SER_KEY = "com.easyinfogeek.objectPass.ser";
 
     private HashMap<Integer, Album> albums;
     private HashMap<Integer, Artist> artists;
@@ -102,19 +106,22 @@ public class AddAlbumActivity extends AppCompatActivity {
         TextView errorMessage = (TextView) findViewById(R.id.error);
         errorMessage.setText("");
         try {
-            hasc.createAlbum(albumName, releaseDate, artist);
-            goAddSongToAlbumPage(v);
+            Album album = hasc.createAlbum(albumName, releaseDate, artist);
+            goAddSongToAlbumPage(v, artist, album);
         } catch (InvalidInputException e) {
             errorMessage.setText(e.getMessage());
         }
         refreshData();
     }
 
-    public void goAddSongToAlbumPage(View v) {
-        Button button =(Button) v;
-        startActivity(new Intent(getApplicationContext(), AddSongToAlbum.class));
+    public void goAddSongToAlbumPage(View v, Artist artist, Album album) {
+        Intent intent = new Intent(getApplicationContext(), AddSongToAlbum.class);
+        Bundle mBundle = new Bundle();
+        mBundle.putSerializable("artist",  (Serializable) artist);
+        mBundle.putSerializable("album",  (Serializable) album);
+        intent.putExtras(mBundle);
+        startActivity(intent);
     }
-
 
     public void showDatePickerDialog(View v) {
         TextView tf = (TextView) v;
