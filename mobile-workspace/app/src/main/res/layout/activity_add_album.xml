@@ -55,49 +55,6 @@
         android:layout_alignEnd="@+id/album_name"
         android:textColor="#FF757575" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/genre"
-        android:layout_below="@+id/artist_name"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="Genre"
-        android:textSize="14dp"
-        android:layout_alignRight="@+id/artist_name"
-        android:layout_alignEnd="@+id/artist_name"
-        android:textColor="#FF757575" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="time"
-        android:ems="10"
-        android:id="@+id/duration"
-        android:layout_below="@+id/genre"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="Duration"
-        android:layout_alignRight="@+id/genre"
-        android:layout_alignEnd="@+id/genre"
-        android:textSize="14dp"
-        android:textColor="#FF757575" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/number_songs"
-        android:layout_below="@+id/duration"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="Number of Songs"
-        android:layout_alignRight="@+id/duration"
-        android:layout_alignEnd="@+id/duration"
-        android:textSize="14dp"
-        android:textColor="#FF757575" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -106,31 +63,40 @@
         android:text="Release Date"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/number_songs"
         android:layout_alignRight="@+id/textView"
         android:layout_alignEnd="@+id/textView"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:layout_below="@+id/artist_name" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="mm.dd.yyyy"
         android:id="@+id/set_date"
-        android:layout_below="@+id/number_songs"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="showDatePickerDialog" />
+        android:onClick="showDatePickerDialog"
+        android:layout_below="@+id/artist_name" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Album"
         android:id="@+id/createAlbum"
-        android:layout_marginTop="87dp"
-        android:layout_below="@+id/set_date"
-        android:layout_alignRight="@+id/set_date"
-        android:layout_alignEnd="@+id/set_date"
-        android:onClick="addAlbum"/>
+        android:onClick="addAlbum"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/artist_name"
+        android:layout_alignEnd="@+id/artist_name" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text=" "
+        android:textColor="#262078"
+        android:id="@+id/error"
+        android:layout_alignTop="@+id/createAlbum"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -140,5 +106,6 @@
         android:layout_toLeftOf="@+id/set_date"
         android:layout_toStartOf="@+id/set_date"
         android:spinnerMode="dropdown" />
+
 
 </RelativeLayout>
