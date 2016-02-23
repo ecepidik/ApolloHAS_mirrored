@@ -2,13 +2,15 @@
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
 package ca.mcgill.ecse321.ApolloHAS.model;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.*;
 
 // line 16 "../../../../../HAS_model.ump"
 // line 63 "../../../../../HAS_model.ump"
-public class Album
+public class Album implements Serializable 
 {
+	
 
   //------------------------
   // MEMBER VARIABLES

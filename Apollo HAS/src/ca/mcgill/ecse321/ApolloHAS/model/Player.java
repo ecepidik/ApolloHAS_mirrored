@@ -3,9 +3,11 @@
 
 package ca.mcgill.ecse321.ApolloHAS.model;
 
+import java.io.Serializable;
+
 // line 34 "../../../../../HAS_model.ump"
 // line 73 "../../../../../HAS_model.ump"
-public class Player
+public class Player implements Serializable 
 {
 
   //------------------------

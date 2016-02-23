@@ -3,11 +3,12 @@
 
 package ca.mcgill.ecse321.ApolloHAS.model;
 import java.util.*;
+import java.io.Serializable;
 import java.sql.Date;
 
 // line 41 "../../../../../HAS_model.ump"
 // line 78 "../../../../../HAS_model.ump"
-public class HAS
+public class HAS implements Serializable 
 {
 
   //------------------------

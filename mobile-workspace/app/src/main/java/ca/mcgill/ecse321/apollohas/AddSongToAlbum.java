@@ -96,7 +96,12 @@ public class AddSongToAlbum extends AppCompatActivity {
 
         TextView errorMessage = (TextView) findViewById(R.id.error);
         errorMessage.setText("");
-        hasc.createSong(songName, duration, genre, trackNumber, artist);
+
+        try {
+            hasc.createSong(songName, duration, genre, trackNumber, artist);
+        } catch (InvalidInputException e) {
+            errorMessage.setText(e.getMessage());
+        }
         refreshData();
     }
 
