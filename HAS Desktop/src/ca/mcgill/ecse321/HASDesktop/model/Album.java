@@ -1,22 +1,12 @@
-package ca.mcgill.ecse321.ApolloHAS.model;
-
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
-<<<<<<< HEAD:HAS Desktop/src/ca/mcgill/ecse321/HASDesktop/model/Album.java
 package ca.mcgill.ecse321.HASDesktop.model;
 import java.sql.Date;
 import java.util.*;
 
-// line 25 "../../../../../HAS_model.ump"
-// line 81 "../../../../../HAS_model.ump"
-=======
-
-import java.sql.Date;
-import java.util.*;
-
-// line 23 "HAS_model.ump"
->>>>>>> origin/master:Apollo HAS/src/ca/mcgill/ecse321/ApolloHAS/model/Album.java
+// line 24 "../../../../../HAS_model.ump"
+// line 80 "../../../../../HAS_model.ump"
 public class Album
 {
 
@@ -197,11 +187,7 @@ public class Album
     placeholderArtist.removeAlbum(this);
   }
 
-<<<<<<< HEAD:HAS Desktop/src/ca/mcgill/ecse321/HASDesktop/model/Album.java
-  // line 30 "../../../../../HAS_model.ump"
-=======
-  // line 28 "HAS_model.ump"
->>>>>>> origin/master:Apollo HAS/src/ca/mcgill/ecse321/ApolloHAS/model/Album.java
+  // line 29 "../../../../../HAS_model.ump"
    public void updateInfo(){
     
   }

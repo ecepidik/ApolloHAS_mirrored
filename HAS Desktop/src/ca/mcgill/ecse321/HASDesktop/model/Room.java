@@ -1,18 +1,10 @@
-package ca.mcgill.ecse321.ApolloHAS.model;
-
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
-<<<<<<< HEAD:HAS Desktop/src/ca/mcgill/ecse321/HASDesktop/model/Room.java
 package ca.mcgill.ecse321.HASDesktop.model;
 
-// line 40 "../../../../../HAS_model.ump"
-// line 91 "../../../../../HAS_model.ump"
-=======
-
-
-// line 38 "HAS_model.ump"
->>>>>>> origin/master:Apollo HAS/src/ca/mcgill/ecse321/ApolloHAS/model/Room.java
+// line 39 "../../../../../HAS_model.ump"
+// line 90 "../../../../../HAS_model.ump"
 public class Room
 {
 
@@ -82,11 +74,7 @@ public class Room
   public void delete()
   {}
 
-<<<<<<< HEAD:HAS Desktop/src/ca/mcgill/ecse321/HASDesktop/model/Room.java
-  // line 45 "../../../../../HAS_model.ump"
-=======
-  // line 43 "HAS_model.ump"
->>>>>>> origin/master:Apollo HAS/src/ca/mcgill/ecse321/ApolloHAS/model/Room.java
+  // line 44 "../../../../../HAS_model.ump"
    public void updateInfo(){
     
   }

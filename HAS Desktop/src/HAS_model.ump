@@ -1,5 +1,4 @@
 namespace ca.mcgill.ecse321.HASDesktop.model;
-
 class Song{
   String name;
   int duration;

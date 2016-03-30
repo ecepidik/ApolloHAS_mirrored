@@ -5,8 +5,8 @@ package ca.mcgill.ecse321.HASDesktop.model;
 import java.util.*;
 import java.sql.Date;
 
-// line 12 "../../../../../HAS_model.ump"
-// line 71 "../../../../../HAS_model.ump"
+// line 11 "../../../../../HAS_model.ump"
+// line 70 "../../../../../HAS_model.ump"
 public class Artist
 {
 
@@ -158,7 +158,7 @@ public class Artist
     }
   }
 
-  // line 16 "../../../../../HAS_model.ump"
+  // line 15 "../../../../../HAS_model.ump"
    public void updateInfo(){
     
   }
