@@ -1,4 +1,5 @@
 
+
 import static org.junit.Assert.*;
 
 import java.io.File;
@@ -19,7 +20,7 @@ import ca.mcgill.ecse321.HASDesktop.model.HAS;
 import ca.mcgill.ecse321.HASDesktop.model.Song;
 import ca.mcgill.ecse321.HASDesktop.persistence.PersistenceXStream;
 
-public class TestApolloHASAlbumController {
+public class TestApolloHASAlbumController2 {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
