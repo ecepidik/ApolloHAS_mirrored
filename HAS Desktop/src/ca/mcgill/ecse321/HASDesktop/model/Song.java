@@ -3,8 +3,13 @@
 
 package ca.mcgill.ecse321.HASDesktop.model;
 
+<<<<<<< HEAD
 // line 3 "../../../../../HAS_model.ump"
 // line 66 "../../../../../HAS_model.ump"
+=======
+// line 2 "../../../../../HAS_model.ump"
+// line 65 "../../../../../HAS_model.ump"
+>>>>>>> origin/master
 public class Song
 {
 
@@ -99,7 +104,11 @@ public class Song
     genre = null;
   }
 
+<<<<<<< HEAD
   // line 9 "../../../../../HAS_model.ump"
+=======
+  // line 8 "../../../../../HAS_model.ump"
+>>>>>>> origin/master
    public void updateInfo(){
     
   }

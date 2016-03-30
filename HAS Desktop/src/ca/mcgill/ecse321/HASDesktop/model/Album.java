@@ -5,8 +5,13 @@ package ca.mcgill.ecse321.HASDesktop.model;
 import java.sql.Date;
 import java.util.*;
 
+<<<<<<< HEAD
 // line 25 "../../../../../HAS_model.ump"
 // line 81 "../../../../../HAS_model.ump"
+=======
+// line 24 "../../../../../HAS_model.ump"
+// line 80 "../../../../../HAS_model.ump"
+>>>>>>> origin/master
 public class Album
 {
 
@@ -187,7 +192,11 @@ public class Album
     placeholderArtist.removeAlbum(this);
   }
 
+<<<<<<< HEAD
   // line 30 "../../../../../HAS_model.ump"
+=======
+  // line 29 "../../../../../HAS_model.ump"
+>>>>>>> origin/master
    public void updateInfo(){
     
   }

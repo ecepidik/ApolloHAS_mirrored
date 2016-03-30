@@ -4,8 +4,13 @@
 package ca.mcgill.ecse321.HASDesktop.model;
 import java.util.*;
 
+<<<<<<< HEAD
 // line 33 "../../../../../HAS_model.ump"
 // line 86 "../../../../../HAS_model.ump"
+=======
+// line 32 "../../../../../HAS_model.ump"
+// line 85 "../../../../../HAS_model.ump"
+>>>>>>> origin/master
 public class Playlist
 {
 
@@ -138,7 +143,11 @@ public class Playlist
     songs.clear();
   }
 
+<<<<<<< HEAD
   // line 37 "../../../../../HAS_model.ump"
+=======
+  // line 36 "../../../../../HAS_model.ump"
+>>>>>>> origin/master
    public void updateInfo(){
     
   }
