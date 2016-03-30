@@ -161,7 +161,7 @@ public class controllerAddsAssociations {
 		
 		Player p = new Player();
 		p.addRoom(room);
-		p.addAlbum(playlist);
+		p.addPlaylist(playlist);
 		manager.addPlayer(p);
 
 		PersistenceXStream.saveToXMLwithXStream(manager);
