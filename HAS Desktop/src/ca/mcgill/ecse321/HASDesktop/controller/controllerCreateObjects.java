@@ -88,7 +88,7 @@ public class controllerCreateObjects {
 		saveAlbum(album);
 
 	}
-	public void createSong( String name,int duration, int trackNum) throws InvalidInputException {
+	public void createSong(String name, int duration, int trackNum) throws InvalidInputException {
 		InvalidInputException e = new InvalidInputException("Cannot have empty fields!");
 
 		if(name.length()==0 || name.trim().length() == 0){
