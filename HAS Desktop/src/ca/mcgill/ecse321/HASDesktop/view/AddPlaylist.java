@@ -72,7 +72,7 @@ public class AddPlaylist extends JFrame {
 		JComboBox<Song> songComboBox = new JComboBox();
 		songComboBox.setBounds(20, 205, 388, 26);
 
-		for(int i=0;i<hs.getSong().size();i++){
+		for(int i=0;i<hs.getSongs().size();i++){
 			songComboBox.addItem(hs.getSong(i));
 		}
 
@@ -98,7 +98,7 @@ public class AddPlaylist extends JFrame {
 					cco.createPlaylist(playlistName.getText());
 					playlistName.setEditable(false);
 					playlistComboBox.removeAllItems();
-					for (int i = 0; i < hs.getPlaylist().size(); i++) {
+					for (int i = 0; i < hs.getPlaylists().size(); i++) {
 
 						playlistComboBox.addItem(hs.getPlaylist(i));
 					}
@@ -112,7 +112,7 @@ public class AddPlaylist extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				playlistComboBox.removeAllItems();
-				for (int i = 0; i < hs.getPlaylist().size(); i++) {
+				for (int i = 0; i < hs.getPlaylists().size(); i++) {
 					
 					playlistComboBox.addItem(hs.getPlaylist(i));
 				}

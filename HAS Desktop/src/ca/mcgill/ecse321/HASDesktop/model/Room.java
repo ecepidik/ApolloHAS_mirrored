@@ -3,13 +3,8 @@
 
 package ca.mcgill.ecse321.HASDesktop.model;
 
-<<<<<<< HEAD
 // line 40 "../../../../../HAS_model.ump"
 // line 91 "../../../../../HAS_model.ump"
-=======
-// line 39 "../../../../../HAS_model.ump"
-// line 90 "../../../../../HAS_model.ump"
->>>>>>> origin/master
 public class Room
 {
 
@@ -79,11 +74,7 @@ public class Room
   public void delete()
   {}
 
-<<<<<<< HEAD
   // line 45 "../../../../../HAS_model.ump"
-=======
-  // line 44 "../../../../../HAS_model.ump"
->>>>>>> origin/master
    public void updateInfo(){
     
   }

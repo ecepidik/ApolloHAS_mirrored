@@ -91,7 +91,7 @@ public class AddAlbum extends JFrame {
 		HAS hs = HAS.getInstance();
 		
 		JComboBox<Artist> artistComboBox = new JComboBox();
-		for (int i = 0; i < hs.getArtist().size(); i++) {
+		for (int i = 0; i < hs.getArtists().size(); i++) {
 			artistComboBox.addItem(hs.getArtist(i));
 		}
 

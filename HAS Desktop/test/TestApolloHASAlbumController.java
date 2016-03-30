@@ -47,7 +47,7 @@ public class TestApolloHASAlbumController {
 	public void testCreateAlbum() {
 		HAS hs = HAS.getInstance();
 
-		assertEquals(0, hs.numberOfAlbum());
+		assertEquals(0, hs.numberOfAlbums());
 
 		String name = "Crazy in Love";
 		Calendar c  = Calendar.getInstance();
@@ -73,7 +73,7 @@ public class TestApolloHASAlbumController {
 	public void testCreateAlbumNull() {
 		HAS hs = HAS.getInstance();
 
-		assertEquals(0, hs.numberOfAlbum());
+		assertEquals(0, hs.numberOfAlbums());
 
 		String name = null;
 		Date releaseDate = null;
@@ -91,14 +91,14 @@ public class TestApolloHASAlbumController {
 		}
 
 
-		assertEquals(0, hs.numberOfAlbum());
+		assertEquals(0, hs.numberOfAlbums());
 	}
 
 	@Test
 	public void testCreateAlbumEmpty() {
 		HAS hs = HAS.getInstance();
 
-		assertEquals(0, hs.numberOfAlbum());
+		assertEquals(0, hs.numberOfAlbums());
 
 		String name = "";
 		Calendar c  = Calendar.getInstance();
@@ -117,14 +117,14 @@ public class TestApolloHASAlbumController {
 		}
 
 	
-		assertEquals(0, hs.numberOfAlbum());
+		assertEquals(0, hs.numberOfAlbums());
 	}
 
 	@Test
 	public void testCreateAlbumSpaces() {
 		HAS hs = HAS.getInstance();
 
-		assertEquals(0, hs.numberOfAlbum());
+		assertEquals(0, hs.numberOfAlbums());
 
 		String name = " ";
 		Calendar c  = Calendar.getInstance();
@@ -143,14 +143,14 @@ public class TestApolloHASAlbumController {
 		}
 
 		
-		assertEquals(0, hs.numberOfAlbum());
+		assertEquals(0, hs.numberOfAlbums());
 	}
 
 	private void checkResultAlbum(String albumName, Date albumReleaseDate, Artist albumArtist, HAS hs1) {
-		assertEquals(1, hs1.numberOfAlbum());
+		assertEquals(1, hs1.numberOfAlbums());
 		assertEquals(albumName, hs1.getAlbum(0).getName());
-		assertEquals(albumReleaseDate.toString(), hs1.getAlbum(0).getDate().toString());
-		assertEquals(albumArtist.getName(), hs1.getAlbum(hs1.getAlbum().size()-1).getArtist().getName());
+		assertEquals(albumReleaseDate.toString(), hs1.getAlbum(0).getReleaseDate().toString());
+		assertEquals(albumArtist.getName(), hs1.getAlbum(hs1.getAlbums().size()-1).getArtist().getName());
 	}
 
 }

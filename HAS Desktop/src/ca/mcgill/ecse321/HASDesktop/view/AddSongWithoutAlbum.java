@@ -128,7 +128,7 @@ public class AddSongWithoutAlbum extends JFrame {
 		albComboBox.setBounds(200, 21, 223, 50);
 		HAS hs = HAS.getInstance();
 		
-		for (int i = 0; i < hs.getAlbum().size();i++) {
+		for (int i = 0; i < hs.getAlbums().size();i++) {
 			albComboBox.addItem(hs.getAlbum(i));
 		}
 		

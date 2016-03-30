@@ -79,9 +79,9 @@ public class HASViewManager {
 
 		PersistenceHAS.loadHAS();
 		HAS hs = HAS.getInstance();
-		String[] albumNames = new String[hs.getAlbum().size()];
+		String[] albumNames = new String[hs.getAlbums().size()];
 		DefaultListModel listmodel = new DefaultListModel();
-		for (int i = 0; i < hs.getAlbum().size(); i++) {
+		for (int i = 0; i < hs.getAlbums().size(); i++) {
 			albumNames[i] = hs.getAlbum(i).getName();
 			listmodel.addElement(hs.getAlbum(i).getName());
 		}
@@ -220,8 +220,8 @@ public class HASViewManager {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				lblListType.setText("Playlists");
-				String[] playlistNames = new String[hs.getPlaylist().size()];
-				for (int i = 0; i < hs.getPlaylist().size(); i++) {
+				String[] playlistNames = new String[hs.getPlaylists().size()];
+				for (int i = 0; i < hs.getPlaylists().size(); i++) {
 					playlistNames[i] = hs.getPlaylist(i).getName();
 				}
 				listView.setListData(playlistNames);
@@ -274,8 +274,8 @@ public class HASViewManager {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				lblListType.setText("Songs");
-				String[] songNames = new String[hs.getSong().size()];
-				for (int i = 0; i < hs.getSong().size(); i++) {
+				String[] songNames = new String[hs.getSongs().size()];
+				for (int i = 0; i < hs.getSongs().size(); i++) {
 					songNames[i] = hs.getSong(i).getName();
 
 				}
@@ -328,8 +328,8 @@ public class HASViewManager {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				lblListType.setText("Albums");
-				String[] albumNames = new String[hs.getAlbum().size()];
-				for (int i = 0; i < hs.getAlbum().size(); i++) {
+				String[] albumNames = new String[hs.getAlbums().size()];
+				for (int i = 0; i < hs.getAlbums().size(); i++) {
 					albumNames[i] = hs.getAlbum(i).getName();
 				}
 				listView.setListData(albumNames);

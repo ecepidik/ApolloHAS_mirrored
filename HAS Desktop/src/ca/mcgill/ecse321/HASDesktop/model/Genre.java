@@ -3,8 +3,8 @@
 
 package ca.mcgill.ecse321.HASDesktop.model;
 
-// line 18 "../../../../../HAS_model.ump"
-// line 75 "../../../../../HAS_model.ump"
+// line 19 "../../../../../HAS_model.ump"
+// line 76 "../../../../../HAS_model.ump"
 public class Genre
 {
 
@@ -44,7 +44,7 @@ public class Genre
   public void delete()
   {}
 
-  // line 21 "../../../../../HAS_model.ump"
+  // line 22 "../../../../../HAS_model.ump"
    public void updateInfo(){
     
   }

@@ -5,8 +5,8 @@ package ca.mcgill.ecse321.HASDesktop.model;
 import java.util.*;
 import java.sql.Date;
 
-// line 54 "../../../../../HAS_model.ump"
-// line 100 "../../../../../HAS_model.ump"
+// line 55 "../../../../../HAS_model.ump"
+// line 101 "../../../../../HAS_model.ump"
 public class HAS
 {
 
