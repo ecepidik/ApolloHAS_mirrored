@@ -1,10 +1,18 @@
+package ca.mcgill.ecse321.ApolloHAS.model;
+
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
+<<<<<<< HEAD:HAS Desktop/src/ca/mcgill/ecse321/HASDesktop/model/Song.java
 package ca.mcgill.ecse321.HASDesktop.model;
 
 // line 3 "../../../../../HAS_model.ump"
 // line 66 "../../../../../HAS_model.ump"
+=======
+
+
+// line 1 "HAS_model.ump"
+>>>>>>> origin/master:Apollo HAS/src/ca/mcgill/ecse321/ApolloHAS/model/Song.java
 public class Song
 {
 
@@ -99,7 +107,11 @@ public class Song
     genre = null;
   }
 
+<<<<<<< HEAD:HAS Desktop/src/ca/mcgill/ecse321/HASDesktop/model/Song.java
   // line 9 "../../../../../HAS_model.ump"
+=======
+  // line 7 "HAS_model.ump"
+>>>>>>> origin/master:Apollo HAS/src/ca/mcgill/ecse321/ApolloHAS/model/Song.java
    public void updateInfo(){
     
   }

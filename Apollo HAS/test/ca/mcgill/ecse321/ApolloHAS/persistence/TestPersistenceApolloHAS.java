@@ -57,7 +57,7 @@ public class TestPersistenceApolloHAS {
 			fail("Could not save file.");
 		
 		hs.delete();
-		assertEquals(0, hs.numberOfAlbum());
+		assertEquals(0, hs.numberOfAlbums());
 		
 		hs = (HAS) PersistenceXStream.loadFromXMLwithXStream();
 		if (hs == null)
@@ -70,13 +70,13 @@ public class TestPersistenceApolloHAS {
 		c.set(2009, 12, 21);
 		Date releaseDate1 = new Date(c1.getTimeInMillis());
 		
-		assertEquals(2, hs.numberOfAlbum());
+		assertEquals(2, hs.numberOfAlbums());
 		assertEquals("Crazy in Love", hs.getAlbum(0).getName());
 		assertEquals("Relapse", hs.getAlbum(1).getName());
 		assertEquals("Beyoncé", hs.getAlbum(0).getArtist());
 		assertEquals("Eminem", hs.getAlbum(1).getArtist());
-		assertEquals(releaseDate.toString(), hs.getAlbum(0).getDate().toString());
-		assertEquals(releaseDate1.toString(), hs.getAlbum(1).getDate().toString());
+		assertEquals(releaseDate.toString(), hs.getAlbum(0).getReleaseDate().toString());
+		assertEquals(releaseDate1.toString(), hs.getAlbum(1).getReleaseDate().toString());
 	}
 
 }
