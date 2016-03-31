@@ -2,11 +2,12 @@
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
 package ca.mcgill.ecse321.HASDesktop.model;
+import java.io.Serializable;
 import java.util.*;
 
 // line 33 "../../../../../HAS_model.ump"
 // line 86 "../../../../../HAS_model.ump"
-public class Playlist
+public class Playlist implements Serializable
 {
 
   //------------------------

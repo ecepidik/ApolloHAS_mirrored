@@ -2,12 +2,13 @@
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
 package ca.mcgill.ecse321.HASDesktop.model;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.*;
 
 // line 25 "../../../../../HAS_model.ump"
 // line 81 "../../../../../HAS_model.ump"
-public class Album
+public class Album implements Serializable
 {
 
   //------------------------

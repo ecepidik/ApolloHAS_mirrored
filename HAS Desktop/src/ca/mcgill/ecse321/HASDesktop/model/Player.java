@@ -3,11 +3,12 @@
 
 package ca.mcgill.ecse321.HASDesktop.model;
 import java.util.*;
+import java.io.Serializable;
 import java.sql.Date;
 
 // line 48 "../../../../../HAS_model.ump"
 // line 96 "../../../../../HAS_model.ump"
-public class Player
+public class Player implements Serializable
 {
 
   //------------------------

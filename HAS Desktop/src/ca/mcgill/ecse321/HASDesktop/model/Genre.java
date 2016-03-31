@@ -3,9 +3,11 @@
 
 package ca.mcgill.ecse321.HASDesktop.model;
 
+import java.io.Serializable;
+
 // line 19 "../../../../../HAS_model.ump"
 // line 76 "../../../../../HAS_model.ump"
-public class Genre
+public class Genre implements Serializable
 {
 
   //------------------------
