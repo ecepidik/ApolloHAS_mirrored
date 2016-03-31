@@ -9,7 +9,7 @@ import com.thoughtworks.xstream.XStream;
 public class PersistenceXStream {
 	
 	private static XStream xstream = new XStream();
-	private static String filename = "has.xml";
+	private static String filename = "data.xml";
 	public static boolean saveToXMLwithXStream(Object obj) {
 		xstream.setMode(XStream.ID_REFERENCES);
 		String xml = xstream.toXML(obj); // save our xml file

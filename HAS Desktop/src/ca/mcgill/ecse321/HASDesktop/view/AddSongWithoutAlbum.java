@@ -76,7 +76,7 @@ public class AddSongWithoutAlbum extends JFrame {
 		panel.setBounds(0, 0, 428, 363);
 		contentPane.add(panel);
 		
-		JSpinner DurationSpinner = new JSpinner(new SpinnerDateModel());
+		final JSpinner DurationSpinner = new JSpinner(new SpinnerDateModel());
 		DurationSpinner.setBounds(200, 183, 223, 32);
 		JSpinner.DateEditor startTimeEditor = new JSpinner.DateEditor(DurationSpinner, "mm:ss"); 
 		DurationSpinner.setEditor(startTimeEditor);
@@ -93,7 +93,7 @@ public class AddSongWithoutAlbum extends JFrame {
 		SngNameTxt.setBounds(200, 148, 223, 26);
 		SngNameTxt.setColumns(10);
 		
-		JLabel lblSave = new JLabel("Save");
+		final JLabel lblSave = new JLabel("Save");
 		lblSave.setBounds(0, 296, 438, 67);
 		
 		lblSave.setOpaque(true);
@@ -118,7 +118,7 @@ public class AddSongWithoutAlbum extends JFrame {
 		GenreTxt = new JTextField();
 		GenreTxt.setBounds(200, 225, 223, 26);
 		GenreTxt.setColumns(10);
-		JComboBox<Album> albComboBox  = new JComboBox();
+		final JComboBox<Album> albComboBox  = new JComboBox();
 		albComboBox.setFont(new Font("Tahoma", Font.PLAIN, 22));
 	
 	
@@ -157,7 +157,7 @@ public class AddSongWithoutAlbum extends JFrame {
 		panel.add(TrackNumTxt);
 		panel.add(lblSave);
 		
-		JLabel lblArtist = new JLabel("");
+		final JLabel lblArtist = new JLabel("");
 		lblArtist.setHorizontalAlignment(SwingConstants.CENTER);
 		lblArtist.setForeground(Color.WHITE);
 		lblArtist.setFont(new Font("Tahoma", Font.BOLD, 22));
@@ -185,23 +185,23 @@ public class AddSongWithoutAlbum extends JFrame {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				controllerCreateObjects song = new controllerCreateObjects();
-				try{
-					Calendar calendar = Calendar.getInstance();
-					calendar.setTime((Date) DurationSpinner.getValue());
-					calendar.set(2000, 1, 1);
-					Time startTime = new Time(calendar.getTime().getTime());
-					Album alb = (Album) albComboBox.getSelectedItem();
-					Artist art = alb.getArtist();
-					song.createSong((Album)albComboBox.getSelectedItem(),art,SngNameTxt.getText(),startTime,GenreTxt.getText(),TrackNumTxt.getText());
-					
-					SngNameTxt.setText("");
-
-					GenreTxt.setText("");
-					TrackNumTxt.setText("");
-					
-				}catch(InvalidInputException e1){
-					error.setup(e1.getMessage());
-				}
+//				try{
+//					Calendar calendar = Calendar.getInstance();
+//					calendar.setTime((Date) DurationSpinner.getValue());
+//					calendar.set(2000, 1, 1);
+//					Time startTime = new Time(calendar.getTime().getTime());
+//					Album alb = (Album) albComboBox.getSelectedItem();
+//					Artist art = alb.getArtist();
+//					song.createSong((Album)albComboBox.getSelectedItem(),art,SngNameTxt.getText(),startTime,GenreTxt.getText(),TrackNumTxt.getText());
+//					
+//					SngNameTxt.setText("");
+//
+//					GenreTxt.setText("");
+//					TrackNumTxt.setText("");
+//					
+//				}catch(InvalidInputException e1){
+//					error.setup(e1.getMessage());
+//				}
 				
 			}
 		});

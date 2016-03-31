@@ -9,10 +9,12 @@ import javax.swing.JSpinner;
 import javax.swing.border.EmptyBorder;
 
 import ca.mcgill.ecse321.HASDesktop.controller.InvalidInputException;
+import ca.mcgill.ecse321.HASDesktop.controller.controllerAddsAssociations;
 import ca.mcgill.ecse321.HASDesktop.controller.controllerCreateObjects;
 import ca.mcgill.ecse321.HASDesktop.controller.createSong;
 import ca.mcgill.ecse321.HASDesktop.model.Album;
 import ca.mcgill.ecse321.HASDesktop.model.Artist;
+import ca.mcgill.ecse321.HASDesktop.model.Genre;
 
 import java.awt.GridLayout;
 import javax.swing.GroupLayout;
@@ -40,14 +42,13 @@ public class AddSongWithAlbum extends JFrame {
 	private JTextField nameTxtFld;
 	private JTextField GenreTxtFld;
 	private JTextField trkNumTxtFld;
-	private static Artist artist;
 	private static Album album;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void setup(Album alb,Artist art) {
-		artist=art;
+	public static void setup(Album alb) {
+		
 		album=alb;
 		
 		EventQueue.invokeLater(new Runnable() {
@@ -75,7 +76,7 @@ public class AddSongWithAlbum extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JSpinner duration = new JSpinner( new SpinnerDateModel() );
+		final JSpinner duration = new JSpinner( new SpinnerDateModel() );
 		JSpinner.DateEditor startTimeEditor = new JSpinner.DateEditor(duration, "mm:ss"); 
 		duration.setEditor(startTimeEditor);
 		duration.setSize(200, 200);
@@ -104,7 +105,7 @@ public class AddSongWithAlbum extends JFrame {
 		trkNumTxtFld = new JTextField();
 		trkNumTxtFld.setColumns(10);
 		
-		JLabel lblSave = new JLabel("Save");
+		final JLabel lblSave = new JLabel("Save");
 		lblSave.setBackground(new Color(0, 0, 0));
 		lblSave.setOpaque(true);
 		lblSave.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -112,13 +113,15 @@ public class AddSongWithAlbum extends JFrame {
 		lblSave.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				controllerCreateObjects song = new controllerCreateObjects();
+				controllerCreateObjects cco = new controllerCreateObjects();
 				try{
-					Calendar calendar = Calendar.getInstance();
-					calendar.setTime((Date) duration.getValue());
-					calendar.set(2000, 1, 1);
-					Time startTime = new Time(calendar.getTime().getTime());
-					song.createSong(album,artist,nameTxtFld.getText(),startTime,GenreTxtFld.getText(),trkNumTxtFld.getText());
+//					Calendar calendar = Calendar.getInstance();
+//					calendar.setTime((Date) duration.getValue());
+//					calendar.set(2000, 1, 1);
+//					Time startTime = new Time(calendar.getTime().getTime());
+					cco.createSong(nameTxtFld.getText(),60,Integer.parseInt((trkNumTxtFld.getText())),new Genre("Rap"));
+					controllerAddsAssociations caa = new controllerAddsAssociations();
+					caa.addSongToAlbum(album, cco.getSong());
 				}catch(InvalidInputException e){
 					error.setup(e.getMessage());
 				

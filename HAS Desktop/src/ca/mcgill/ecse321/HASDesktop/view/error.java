@@ -20,7 +20,7 @@ public class error {
 	/**
 	 * Launch the application.
 	 */
-	public static void setup(String string) {
+	public static void setup(final String string) {
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -60,7 +60,7 @@ public class error {
 		errorLabel.setBounds(-2, 16, 826, 106);
 		frame.getContentPane().add(errorLabel);
 		
-		JLabel OKlbl = new JLabel("Ok");
+		final JLabel OKlbl = new JLabel("Ok");
 		OKlbl.setBackground(new Color(0, 0, 0));
 		OKlbl.setOpaque(true);
 		OKlbl.addMouseListener(new MouseAdapter() {

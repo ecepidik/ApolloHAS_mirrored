@@ -13,9 +13,10 @@ import java.sql.Date;
 import ca.mcgill.ecse321.HASDesktop.model.Album;
 import ca.mcgill.ecse321.HASDesktop.model.HAS;
 import ca.mcgill.ecse321.HASDesktop.model.Playlist;
+import ca.mcgill.ecse321.HASDesktop.model.Room;
 import ca.mcgill.ecse321.HASDesktop.model.Song;
 import ca.mcgill.ecse321.HASDesktop.model.Artist;
-
+import ca.mcgill.ecse321.HASDesktop.model.Genre;
 import ca.mcgill.ecse321.HASDesktop.persistence.PersistenceXStream;
 
 public class controllerCreateObjects {
@@ -23,31 +24,14 @@ public class controllerCreateObjects {
 	Artist artist;
 	Song song;
 	Playlist playlist;
-	//	String name;
-	//	String artistName;
-	//	String releaseDate;
-	//	String inputNumberofSongs;
-	//	int numberOfSongs;
-
-
-
 	public controllerCreateObjects(){
-		//
-		//		this.name = albName;
-		//		this.artistName = artName;
-		//
-		//		this.releaseDate = RlsDate;
-		//
-		//		this.inputNumberofSongs = numbOfSongs;
-		//
-		//
+
+
 	}
 
 	public controllerCreateObjects(String name2, Date releaseDate2, Artist artist2, String error) {
-		//		this.name = name2;
-		//		this.releaseDate = null;
-		//		this.artistName = null;
-		//		this.inputNumberofSongs = error;
+
+
 	}
 
 	public void createAlbum(String albName,Artist art,Date date,String numbOfSongs)throws InvalidInputException, NumberFormatException {
@@ -79,16 +63,16 @@ public class controllerCreateObjects {
 		InvalidInputException eDate;
 
 	
-		Album album;
+		Album alb;
 
-		album = new Album(albName,date,art);
-		art.addAlbum(album);
-		
-		saveArtist(art);
-		saveAlbum(album);
-
+		alb = new Album(albName,date,art);
+		art.addAlbum(alb);
+		HAS hs = HAS.getInstance();
+		this.album = alb;
+		hs.addAlbum(alb);
+		PersistenceXStream.saveToXMLwithXStream(hs);
 	}
-	public void createSong(String name, int duration, int trackNum) throws InvalidInputException {
+	public void createSong(String name,int duration, int trackNum,Genre genre) throws InvalidInputException {
 		InvalidInputException e = new InvalidInputException("Cannot have empty fields!");
 
 		if(name.length()==0 || name.trim().length() == 0){
@@ -103,40 +87,40 @@ public class controllerCreateObjects {
 			throw e;
 		}
 		
-//		InvalidInputException eNum = new InvalidInputException("Incorrect Track Number Format!");
-//		int trackNumber =0;
-//		try {
-//			trackNumber  = Integer.parseInt(trackNum);
-//
-//		} catch (NumberFormatException e1) {
-//			throw eNum;
-//		}
-//		if(trackNumber<0){
-//			throw eNum;
-//		}
+		InvalidInputException eNum = new InvalidInputException("Incorrect Track Number Format!");
+		
+		if(trackNum<0){
+			throw eNum;
+		}
 
-//		InvalidInputException eTime = new InvalidInputException("Incorrect Time Format");
+		InvalidInputException eTime = new InvalidInputException("Incorrect Time Format");
 		Song aSong;
-//		Album album = alb;
 		try {
-			aSong = new Song(name, duration, trackNum);
+			aSong = new Song(name, duration, trackNum,genre);
 		} catch (Exception e2 ) {
 			throw eTime;
 		}
-
-		album.addSong(aSong);
-		album.addSongAt(aSong,trackNum);
-
-		saveSong(aSong);
-		saveAlbum(alb);
+		HAS hs = HAS.getInstance();
+		this.song = aSong;
+		hs.addSong(aSong);
+		PersistenceXStream.saveToXMLwithXStream(hs);
 	}
 	
 	public void createArtist(String artName)throws InvalidInputException{
 		InvalidInputException e = new InvalidInputException("Must enter a name!");
 		if(artName.length()==0||artName.trim().length()==0)
-			throw e;
+			throw e;		
 		Artist artist = new Artist(artName);
-		saveArtist(artist);
+		HAS hs = HAS.getInstance();
+		for (int i = 0; i < hs.getArtists().size(); i++) {
+			if(hs.getArtist(i).getName()==artist.getName())
+			{
+				artist=hs.getArtist(i);
+			}
+		}		
+		this.artist = artist;
+		hs.addArtist(artist);
+		PersistenceXStream.saveToXMLwithXStream(hs);
 	}
 	
 	public void createPlaylist (String name)throws InvalidInputException{
@@ -145,48 +129,48 @@ public class controllerCreateObjects {
 			throw e;
 		}
 		Playlist playlist = new Playlist(name);
-		savePlaylist(playlist);
-	}
-	private void savePlaylist(Playlist playlist) {
 		HAS hs = HAS.getInstance();
-		this.playlist=playlist;
+
+		this.playlist = playlist;
 		hs.addPlaylist(playlist);
 		PersistenceXStream.saveToXMLwithXStream(hs);
 	}
-
-	private void saveSong(Song aSong) {
-
+	
+	public void createRoom (String name,int volume,boolean mute)throws InvalidInputException{
+		InvalidInputException e = new InvalidInputException("Cannot have empty fields!");
+		if(name.length() == 0|| name.trim().length() == 0){
+			throw e;
+		}
+		
+		Room room = new Room(name,volume,mute);
 		HAS hs = HAS.getInstance();
-		this.song = aSong;
-		hs.addSong(aSong);
-
-		PersistenceXStream.saveToXMLwithXStream(hs);
-
-	}
-
-
-	private void saveArtist(Artist artist) {
-		HAS hs = HAS.getInstance();
-		this.artist = artist;
-		hs.addArtist(artist);
-		PersistenceXStream.saveToXMLwithXStream(hs);
-	}
-
-	private void saveAlbum(Album alb) {
-		HAS hs = HAS.getInstance();
-		this.album = alb;
-		hs.addAlbum(alb);
+		for (int i = 0; i < hs.getRooms().size(); i++) {
+			if(hs.getRoom(i).getName()==room.getName())
+			{
+				room=hs.getRoom(i);
+			}
+		}	
+		hs.addRoom(room);
 		PersistenceXStream.saveToXMLwithXStream(hs);
 	}
+	
+	public void createGenre (String name)throws InvalidInputException{
+		InvalidInputException e = new InvalidInputException("Cannot have empty fields!");
+		if(name.length() == 0|| name.trim().length() == 0){
+			throw e;
+		}
+		Genre genre = new Genre(name);
+		HAS hs = HAS.getInstance();
+		hs.addGenre(genre);
+		PersistenceXStream.saveToXMLwithXStream(hs);
 
-
-	public Artist getArtist(){
-		return this.artist;
 	}
 	public Album getAlbum(){
 		return this.album;
+		
 	}
-
-
-
+	public Song getSong(){
+		return this.song;
+		
+	}
 }

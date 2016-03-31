@@ -19,7 +19,9 @@ public class controllerAddsAssociations {
 		HAS manager = HAS.getInstance();
 		
 		String error = "";
-		if(!manager.getSongs().contains(song))
+		if(song == null)
+			error = error + "Song needs to be selected! ";
+		else if(!manager.getSongs().contains(song))
 			error = error + "Song does not exist! ";
 		if(playlist == null)
 			error = error + "Playlist needs to be selected!";
@@ -37,10 +39,14 @@ public class controllerAddsAssociations {
 	public void addSongToAlbum(Album album,Song song) throws InvalidInputException {
 		HAS manager = HAS.getInstance();
 		String error = "";
-		if(!manager.getSongs().contains(song))
+		if(song == null)
+			error = error + "Song needs to exist! ";
+		else if(!manager.getSongs().contains(song))
 			error = error + "Song does not exist! ";
-		if(!manager.getAlbums().contains(album))
-			error = error + "Album does not exist!";
+		if(album == null)
+			error = error + "Album needs to be selected!";
+		else if(!manager.getAlbums().contains(album))
+			error = error + "Album needs to be selected!";
 		error = error.trim();
 			
 		if(error.length() > 0)

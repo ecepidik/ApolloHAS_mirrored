@@ -87,10 +87,10 @@ public class AddAlbum extends JFrame {
 		p.put("text.month", "Month");
 		p.put("text.year", "Year");
 		JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
-		JDatePickerImpl albDatePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
+		final JDatePickerImpl albDatePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
 		HAS hs = HAS.getInstance();
 		
-		JComboBox<Artist> artistComboBox = new JComboBox();
+		final JComboBox<Artist> artistComboBox = new JComboBox();
 		for (int i = 0; i < hs.getArtists().size(); i++) {
 			artistComboBox.addItem(hs.getArtist(i));
 		}
@@ -150,10 +150,8 @@ public class AddAlbum extends JFrame {
 					
 				}	
 				if(passed){
-					Artist art = album.getArtist();
-					Album alb = album.getAlbum();
 					contentPane.setOpaque(false);
-					AddSongWithAlbum.setup(alb,art);
+					AddSongWithAlbum.setup(album.getAlbum());
 					}
 			}
 			@Override

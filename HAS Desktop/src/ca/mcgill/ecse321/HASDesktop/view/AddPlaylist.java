@@ -58,7 +58,7 @@ public class AddPlaylist extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		HAS hs = HAS.getInstance();
+		final HAS hs = HAS.getInstance();
 
 		JLabel lblChooseSongs = new JLabel("Choose Songs");
 		lblChooseSongs.setBounds(20, 176, 388, 20);
@@ -69,7 +69,7 @@ public class AddPlaylist extends JFrame {
 	
 		lblAddSong.setHorizontalAlignment(SwingConstants.CENTER);
 
-		JComboBox<Song> songComboBox = new JComboBox();
+		final JComboBox<Song> songComboBox = new JComboBox();
 		songComboBox.setBounds(20, 205, 388, 26);
 
 		for(int i=0;i<hs.getSongs().size();i++){
@@ -86,7 +86,7 @@ public class AddPlaylist extends JFrame {
 		JLabel lblCreatePlaylist = new JLabel("Create Playlist");
 		lblCreatePlaylist.setBounds(20, 48, 388, 55);
 
-		JComboBox<Playlist> playlistComboBox = new JComboBox();
+		final JComboBox<Playlist> playlistComboBox = new JComboBox();
 		playlistComboBox.setBounds(20, 134, 388, 26);
 
 		lblCreatePlaylist.setHorizontalAlignment(SwingConstants.CENTER);
@@ -126,8 +126,7 @@ public class AddPlaylist extends JFrame {
 				controllerAddsAssociations caa = new controllerAddsAssociations();
 				try {
 					caa.addSongToPlaylist(p, s);
-				} catch (InvalidInputException e1) {
-					// TODO Auto-generated catch block
+				} catch (InvalidInputException e1){
 					error.setup(e1.getMessage());
 				}
 			}

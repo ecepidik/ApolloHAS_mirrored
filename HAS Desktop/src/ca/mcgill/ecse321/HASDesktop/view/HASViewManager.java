@@ -34,7 +34,7 @@ import java.awt.Scrollbar;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
+import ca.mcgill.ecse321.HASDesktop.org.eclipse.wb.swing.*;
 import java.awt.Component;
 
 public class HASViewManager {
@@ -77,8 +77,8 @@ public class HASViewManager {
 		frmApollo.getContentPane().setLayout(new BoxLayout(frmApollo.getContentPane(), BoxLayout.X_AXIS));
 
 
-		PersistenceHAS.loadHAS();
-		HAS hs = HAS.getInstance();
+		PersistenceHAS.loadApolloHASModel();
+		final HAS hs = HAS.getInstance();
 		String[] albumNames = new String[hs.getAlbums().size()];
 		DefaultListModel listmodel = new DefaultListModel();
 		for (int i = 0; i < hs.getAlbums().size(); i++) {
@@ -87,7 +87,7 @@ public class HASViewManager {
 		}
 
 
-		JPanel panel = new JPanel();
+		final JPanel panel = new JPanel();
 		panel.setBackground(new Color(25, 25, 112));
 		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		frmApollo.getContentPane().add(panel);
@@ -106,7 +106,7 @@ public class HASViewManager {
 		Roomslbl.setBackground(Color.WHITE);
 		Roomslbl.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 44));
 
-		JLabel lblCreateRoom = new JLabel("New Room");
+		final JLabel lblCreateRoom = new JLabel("New Room");
 		lblCreateRoom.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -144,7 +144,7 @@ public class HASViewManager {
 
 
 
-		JLabel lblListType = new JLabel("Albums");
+		final JLabel lblListType = new JLabel("Albums");
 		lblListType.setBounds(198, 0, 654, 86);
 		lblListType.setOpaque(true);
 		lblListType.setBackground(new Color(56,45,56).darker().darker());
@@ -183,7 +183,7 @@ public class HASViewManager {
 		separator_3.setBounds(15, 615, 169, 46);
 		panel_1.add(separator_3);
 
-		JLabel lblCreatePlaylists = new JLabel("Create Playlist");
+		final JLabel lblCreatePlaylists = new JLabel("Create Playlist");
 		lblCreatePlaylists.setBounds(0, 557, 196, 57);
 		lblCreatePlaylists.setOpaque(true);
 		lblCreatePlaylists.setFont(new Font("Tahoma", Font.PLAIN, 22));
@@ -206,7 +206,7 @@ public class HASViewManager {
 		lblCreatePlaylists.setForeground(Color.WHITE);
 		panel_1.add(lblCreatePlaylists);
 
-		JLabel lblPlaylists = new JLabel("Playlists");
+		final JLabel lblPlaylists = new JLabel("Playlists");
 		lblPlaylists.setBounds(0, 499, 196, 57);
 		lblPlaylists.addMouseListener(new MouseAdapter() {
 			@Override
@@ -223,6 +223,9 @@ public class HASViewManager {
 				String[] playlistNames = new String[hs.getPlaylists().size()];
 				for (int i = 0; i < hs.getPlaylists().size(); i++) {
 					playlistNames[i] = hs.getPlaylist(i).getName();
+					for (int j = 0; j < hs.getPlaylist(i).getSongs().size(); j++) {
+						playlistNames[i]  += " \t"+hs.getPlaylist(i).getSong(j).getName();
+					}
 				}
 				listView.setListData(playlistNames);
 
@@ -237,7 +240,7 @@ public class HASViewManager {
 		lblPlaylists.setForeground(Color.WHITE);
 		panel_1.add(lblPlaylists);
 
-		JLabel lblAddSongs = new JLabel("Add Songs");
+		final JLabel lblAddSongs = new JLabel("Add Songs");
 		lblAddSongs.setBounds(0, 368, 196, 57);
 		lblAddSongs.setOpaque(true);
 		lblAddSongs.addMouseListener(new MouseAdapter() {
@@ -260,7 +263,7 @@ public class HASViewManager {
 		lblAddSongs.setBackground(Color.BLACK);
 		panel_1.add(lblAddSongs);
 
-		JLabel lblSongs = new JLabel("Songs");
+		final JLabel lblSongs = new JLabel("Songs");
 		lblSongs.setBounds(0, 312, 196, 57);
 		lblSongs.addMouseListener(new MouseAdapter() {
 			@Override
@@ -292,7 +295,7 @@ public class HASViewManager {
 		lblSongs.setBackground(Color.BLACK);
 		panel_1.add(lblSongs);
 
-		JLabel lblAddAlbums = new JLabel("Add Albums");
+		final JLabel lblAddAlbums = new JLabel("Add Albums");
 		lblAddAlbums.setBounds(0, 208, 196, 57);
 		lblAddAlbums.addMouseListener(new MouseAdapter() {
 			@Override
@@ -314,7 +317,7 @@ public class HASViewManager {
 		lblAddAlbums.setBackground(Color.BLACK);
 		panel_1.add(lblAddAlbums);
 
-		JLabel lblAlbums = new JLabel("Albums");
+		final JLabel lblAlbums = new JLabel("Albums");
 		lblAlbums.setBounds(0, 150, 196, 57);
 		lblAlbums.addMouseListener(new MouseAdapter() {
 			@Override
@@ -331,6 +334,9 @@ public class HASViewManager {
 				String[] albumNames = new String[hs.getAlbums().size()];
 				for (int i = 0; i < hs.getAlbums().size(); i++) {
 					albumNames[i] = hs.getAlbum(i).getName();
+					for (int j = 0; j < hs.getAlbum(i).getSongs().size(); j++) {
+						albumNames[i] += hs.getAlbum(i).getSong(i);
+					}
 				}
 				listView.setListData(albumNames);
 
@@ -346,7 +352,7 @@ public class HASViewManager {
 		lblAlbums.setBackground(Color.BLACK);
 		panel_1.add(lblAlbums);
 
-		JLabel lblNewArtist = new JLabel("New Artist");
+		final JLabel lblNewArtist = new JLabel("New Artist");
 		lblNewArtist.setBackground(Color.BLACK);
 		lblNewArtist.setOpaque(true);
 		lblNewArtist.addMouseListener(new MouseAdapter() {

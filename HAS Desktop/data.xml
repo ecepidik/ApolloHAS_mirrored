@@ -1,0 +1,43 @@
+<HAS id="1">
+  <players id="2"/>
+  <rooms id="3"/>
+  <songs id="4">
+    <song id="5">
+      <name>What</name>
+      <duration>60</duration>
+      <trackNum>3</trackNum>
+      <genre id="6">
+        <name>Rap</name>
+      </genre>
+    </song>
+    <song id="7">
+      <name>Compton life</name>
+      <duration>60</duration>
+      <trackNum>3</trackNum>
+      <genre id="8">
+        <name>Rap</name>
+      </genre>
+    </song>
+  </songs>
+  <albums id="9">
+    <album id="10">
+      <name>Ece is getting sick of her best 100</name>
+      <releaseDate id="11">2016-03-03</releaseDate>
+      <songs id="12">
+        <song reference="5"/>
+        <song reference="7"/>
+      </songs>
+      <artist id="13">
+        <name>Ece</name>
+        <albums id="14">
+          <album reference="10"/>
+        </albums>
+      </artist>
+    </album>
+  </albums>
+  <playlists id="15"/>
+  <artists id="16">
+    <artist reference="13"/>
+  </artists>
+  <genres id="17"/>
+</HAS>

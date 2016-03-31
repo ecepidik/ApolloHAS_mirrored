@@ -61,7 +61,7 @@ public class AddArtist extends JFrame {
 		contentPane.add(artTxtField);
 		artTxtField.setColumns(10);
 		
-		JLabel lblCreateArtist = new JLabel("Create Artist");
+		final JLabel lblCreateArtist = new JLabel("Create Artist");
 		lblCreateArtist.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
