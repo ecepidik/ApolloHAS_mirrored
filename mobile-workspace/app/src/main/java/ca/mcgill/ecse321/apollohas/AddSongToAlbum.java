@@ -24,6 +24,7 @@ import ca.mcgill.ecse321.ApolloHAS.model.Album;
 import ca.mcgill.ecse321.ApolloHAS.model.Artist;
 import ca.mcgill.ecse321.ApolloHAS.model.HAS;
 import ca.mcgill.ecse321.ApolloHAS.model.Song;
+import ca.mcgill.ecse321.HASDesktop.controller.controllerCreateObjects;
 
 public class AddSongToAlbum extends AppCompatActivity {
 
@@ -52,7 +53,7 @@ public class AddSongToAlbum extends AppCompatActivity {
         for (Iterator<Song> songs = manager.getSong().iterator(); songs.hasNext(); i++) {
             Song song = songs.next();
             this.songs.put(i, song);
-            ac.addSongsToAlbum(song, this.album);
+            ac.addSongToAlbum(song, this.album);
 
         }
     }
@@ -80,7 +81,7 @@ public class AddSongToAlbum extends AppCompatActivity {
     }
 
     public void addSong(View v) {
-        ApolloHASAlbumController hasc = new ApolloHASAlbumController();
+        controllerCreateObjects cco = new controllerCreateObjects();
 
         TextView tvSongName = (TextView) findViewById(R.id.song_name);
         String songName = tvSongName.getText().toString();
@@ -91,14 +92,17 @@ public class AddSongToAlbum extends AppCompatActivity {
         TextView tvGenre = (TextView) findViewById(R.id.genre);
         String genre = tvGenre.getText().toString();
 
+        if(genres.contains)
+
         TextView tvTrackNumber = (TextView) findViewById(R.id.track_number);
         int trackNumber = Integer.parseInt(tvTrackNumber.getText().toString());
 
         TextView errorMessage = (TextView) findViewById(R.id.error);
         errorMessage.setText("");
 
+
         try {
-            hasc.createSong(songName, duration, genre, trackNumber, artist);
+            cco.createSong(songName, duration, trackNumber, genre);
         } catch (InvalidInputException e) {
             errorMessage.setText(e.getMessage());
         }

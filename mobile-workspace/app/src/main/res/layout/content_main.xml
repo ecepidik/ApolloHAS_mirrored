@@ -10,14 +10,27 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="ca.mcgill.ecse321.apollohas.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:showIn="@layout/activity_main"
+    android:orientation="vertical">
 
 
     <Button
+        android:layout_width="119dp"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/newAlbum_button"
+        android:text="@string/mySongs_button"
+        android:id="@+id/button" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="118dp"
+        android:text="@string/myAlbum_button"
         android:onClick="goAddAlbumPage" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Playlists"
+        android:id="@+id/button2" />
 
     //Add Album is in the first layout layer
 

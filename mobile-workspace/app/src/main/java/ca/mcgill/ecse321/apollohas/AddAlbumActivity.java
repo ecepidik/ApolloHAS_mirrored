@@ -21,18 +21,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import ca.mcgill.ecse321.ApolloHAS.model.Album;
-import ca.mcgill.ecse321.ApolloHAS.model.Song;
-import ca.mcgill.ecse321.ApolloHAS.model.Artist;
-import ca.mcgill.ecse321.ApolloHAS.model.HAS;
-import ca.mcgill.ecse321.ApolloHAS.controller.*;
+import ca.mcgill.ecse321.HASDesktop.model.*;
+import ca.mcgill.ecse321.HASDesktop.controller.*;
+import ca.mcgill.ecse321.HASDesktop.persistence.PersistenceHAS;
 
 public class AddAlbumActivity extends AppCompatActivity {
 
     public  final static String SER_KEY = "com.easyinfogeek.objectPass.ser";
 
     private HashMap<Integer, Album> albums;
-    private HashMap<Integer, Artist> artists;
+    private HashMap<String, Artist> artists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +56,7 @@ public class AddAlbumActivity extends AppCompatActivity {
         }
         spinnerAlbum.setAdapter(albumAdapter);
 
-        this.artists = new HashMap<Integer, Artist>();
+        this.artists = new HashMap<String, Artist>();
         int k = 0;
         for (Iterator<Artist> artists = manager.getArtist().iterator(); artists.hasNext(); i++) {
             Artist artist = artists.next();
@@ -91,33 +89,52 @@ public class AddAlbumActivity extends AppCompatActivity {
     }
 
     public void addAlbum(View v) {
-        ApolloHASAlbumController hasc = new ApolloHASAlbumController();
+
+        PersistenceHAS phas = new PersistenceHAS();
+        phas.loadApolloHASModel();
+        final HAS hs = HAS.getInstance();
+        String[] albumNames = new String[hs.getAlbums().size()];
+
+        TextView errorMessage = (TextView) findViewById(R.id.error);
+        errorMessage.setText("");
+
+        controllerCreateObjects cco = new controllerCreateObjects();
 
         TextView tvAlbumName = (TextView) findViewById(R.id.album_name);
         String albumName = tvAlbumName.getText().toString();
 
+        //creates an artist while creating an album
         TextView tvArtistName = (TextView) findViewById(R.id.artist_name);
         String artistName = tvArtistName.toString();
-        Artist artist = hasc.createArtist(artistName);
+        Artist artist = null;
+        if(artists.containsKey(artistName) == false) {
+            try {
+                cco.createArtist(artistName);
+            } catch (InvalidInputException e) {
+                errorMessage.setText(e.getMessage());
+            }
+        }
+        artist = artists.get(artistName);
 
         TextView tvReleaseDate = (TextView) findViewById(R.id.release_date);
         Date releaseDate = unbundleDateBundle(getDateFromLabel(tvReleaseDate.getText()));
 
-        TextView errorMessage = (TextView) findViewById(R.id.error);
-        errorMessage.setText("");
+        TextView tvNumSongs = (TextView) findViewById(R.id.num_songs);
+        String num_songs = tvNumSongs.toString();
+
         try {
-            Album album = hasc.createAlbum(albumName, releaseDate, artist);
-            goAddSongToAlbumPage(v, artist, album);
+            cco.createAlbum(albumName, artist, releaseDate, num_songs);
+            Album album = cco.getAlbum();
+            goAddSongToAlbumPage(v, album);
         } catch (InvalidInputException e) {
             errorMessage.setText(e.getMessage());
         }
         refreshData();
     }
 
-    public void goAddSongToAlbumPage(View v, Artist artist, Album album) {
+    public void goAddSongToAlbumPage(View v, Album album) {
         Intent intent = new Intent(getApplicationContext(), AddSongToAlbum.class);
         Bundle mBundle = new Bundle();
-        mBundle.putSerializable("artist",  (Serializable) artist);
         mBundle.putSerializable("album",  (Serializable) album);
         intent.putExtras(mBundle);
         startActivity(intent);

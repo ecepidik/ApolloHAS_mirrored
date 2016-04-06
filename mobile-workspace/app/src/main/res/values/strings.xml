@@ -5,7 +5,9 @@
     <string name="Duration">00:00</string>
     <string name="release_date_label">ReleaseDate</string>
     <string name="release_date">mm.dd.yyyy</string>
-    <string name="newAlbum_button">Add Album</string>
+    <string name="myAlbum_button">My Albums</string>
+    <string name="mySongs_button">My Songs</string>
     <string name="title_activity_add_song_to_album">AddSongToAlbum</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_view_and_add_songs">ViewAndAddSongs</string>
 </resources>
