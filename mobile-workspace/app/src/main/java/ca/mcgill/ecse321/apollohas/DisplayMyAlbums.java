@@ -20,12 +20,13 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 import ca.mcgill.ecse321.HASDesktop.model.*;
 import ca.mcgill.ecse321.HASDesktop.controller.*;
 import ca.mcgill.ecse321.HASDesktop.persistence.PersistenceHAS;
 
-public class AddAlbumActivity extends AppCompatActivity {
+public class DisplayMyAlbums extends AppCompatActivity {
 
     public  final static String SER_KEY = "com.easyinfogeek.objectPass.ser";
 
@@ -40,31 +41,31 @@ public class AddAlbumActivity extends AppCompatActivity {
     }
 
 
-    private void refreshData() {
-        HAS manager = HAS.getInstance();
-        Spinner spinnerAlbum = (Spinner) findViewById(R.id.albumspinner);
-        ArrayAdapter<CharSequence> albumAdapter = new
-                ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
-        albumAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        this.albums = new HashMap<Integer, Album>();
-        int i = 0;
-        for (Iterator<Album> albums = manager.getAlbum().iterator(); albums.hasNext(); i++) {
-            Album album = albums.next();
-            albumAdapter.add(album.getName());
-            this.albums.put(i, album);
-        }
-        spinnerAlbum.setAdapter(albumAdapter);
-
-        this.artists = new HashMap<String, Artist>();
-        int k = 0;
-        for (Iterator<Artist> artists = manager.getArtist().iterator(); artists.hasNext(); i++) {
-            Artist artist = artists.next();
-//            artistAdapter.add(artist.getName());
-            this.artists.put(k, artist);
-        }
-        //spinnerAlbum.setAdapter(albumAdapter);
-    }
+//    private void refreshData() {
+//        HAS manager = HAS.getInstance();
+//        Spinner spinnerAlbum = (Spinner) findViewById(R.id.albumspinner);
+//        ArrayAdapter<CharSequence> albumAdapter = new
+//                ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
+//        albumAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//
+//        this.albums = new HashMap<Integer, Album>();
+//        int i = 0;
+//        for (Iterator<Album> albums = manager.getAlbum().iterator(); albums.hasNext(); i++) {
+//            Album album = albums.next();
+//            albumAdapter.add(album.getName());
+//            this.albums.put(i, album);
+//        }
+//        spinnerAlbum.setAdapter(albumAdapter);
+//
+//        this.artists = new HashMap<String, Artist>();
+//        int k = 0;
+//        for (Iterator<Artist> artists = manager.getArtist().iterator(); artists.hasNext(); i++) {
+//            Artist artist = artists.next();
+////            artistAdapter.add(artist.getName());
+//            this.artists.put(k, artist);
+//        }
+//        //spinnerAlbum.setAdapter(albumAdapter);
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -88,12 +89,30 @@ public class AddAlbumActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void addAlbum(View v) {
+//    public void displayAlbums(View v) {
+//            //Initialize the data in the participant spinner
+//            RegistrationManager rm = RegistrationManager.getInstance();
+//            Spinner spinnerParticipant = (Spinner) findViewById(R.id.participantspinner);
+//            ArrayAdapter<CharSequence> participantAdapter = new
+//                    ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
+//            participantAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//            this.participants = new HashMap<Integer, Participant>();
+//            //this.participants = new HashMap<String, Participant>();
+//            int i = 0;
+//
+//            for (Iterator<Participant> participants = rm.getParticipants().iterator(); participants.hasNext(); i++) {
+//                Participant p = participants.next();
+//                participantAdapter.add(p.getName());
+//                this.participants.put(i, p);
+//                //this.participants.put(p.getName(), p);
+//            }
+//            spinnerParticipant.setAdapter(participantAdapter);
+//    }
 
+    public void createAlbum(View v) {
         PersistenceHAS phas = new PersistenceHAS();
         phas.loadApolloHASModel();
         final HAS hs = HAS.getInstance();
-        String[] albumNames = new String[hs.getAlbums().size()];
 
         TextView errorMessage = (TextView) findViewById(R.id.error);
         errorMessage.setText("");
@@ -105,16 +124,17 @@ public class AddAlbumActivity extends AppCompatActivity {
 
         //creates an artist while creating an album
         TextView tvArtistName = (TextView) findViewById(R.id.artist_name);
-        String artistName = tvArtistName.toString();
-        Artist artist = null;
-        if(artists.containsKey(artistName) == false) {
+        Artist artist = new Artist(tvArtistName.toString());
+
+        List<Artist> artists = hs.getArtists();
+
+        if(artists.contains(artist) == false) {
             try {
-                cco.createArtist(artistName);
+                cco.createArtist(tvArtistName.toString());
             } catch (InvalidInputException e) {
                 errorMessage.setText(e.getMessage());
             }
         }
-        artist = artists.get(artistName);
 
         TextView tvReleaseDate = (TextView) findViewById(R.id.release_date);
         Date releaseDate = unbundleDateBundle(getDateFromLabel(tvReleaseDate.getText()));
@@ -123,22 +143,19 @@ public class AddAlbumActivity extends AppCompatActivity {
         String num_songs = tvNumSongs.toString();
 
         try {
-            cco.createAlbum(albumName, artist, releaseDate, num_songs);
-            Album album = cco.getAlbum();
-            goAddSongToAlbumPage(v, album);
+            cco.createAlbum(albumName, artist, releaseDate, "10");
         } catch (InvalidInputException e) {
             errorMessage.setText(e.getMessage());
         }
-        refreshData();
     }
-
-    public void goAddSongToAlbumPage(View v, Album album) {
-        Intent intent = new Intent(getApplicationContext(), AddSongToAlbum.class);
-        Bundle mBundle = new Bundle();
-        mBundle.putSerializable("album",  (Serializable) album);
-        intent.putExtras(mBundle);
-        startActivity(intent);
-    }
+//
+//    public void goCreateSongPage(View v) {
+//        Intent intent = new Intent(getApplicationContext(), CreateSong.class);
+//       // Bundle mBundle = new Bundle();
+//       // mBundle.putSerializable("album",  (Serializable) album);
+//       // intent.putExtras(mBundle);
+//        startActivity(intent);
+//    }
 
     public void showDatePickerDialog(View v) {
         TextView tf = (TextView) v;

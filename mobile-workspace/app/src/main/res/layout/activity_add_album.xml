@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ca.mcgill.ecse321.apollohas.AddAlbumActivity">
+    tools:context=".DisplayMyAlbums">
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,35 +55,46 @@
         android:layout_alignEnd="@+id/album_name"
         android:textColor="#FF757575" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/num_songs"
+        android:text="Number of Songs"
+        android:textSize="14dp"
+        android:layout_below="@+id/artist_name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/artist_name"
+        android:layout_alignEnd="@+id/artist_name"
+        android:textColor="#FF757575" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/release_date"
         android:editable="false"
         android:text="Release Date"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
         android:textSize="14sp"
-        android:layout_below="@+id/artist_name" />
+        android:layout_below="@+id/num_songs"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="mm.dd.yyyy"
         android:id="@+id/set_date"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:onClick="showDatePickerDialog"
-        android:layout_below="@+id/artist_name" />
+        android:layout_below="@+id/release_date"
+        android:layout_alignRight="@+id/createAlbum"
+        android:layout_alignEnd="@+id/createAlbum" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Album"
         android:id="@+id/createAlbum"
-        android:onClick="addAlbum"
+        android:onClick="createAlbum"
         android:layout_centerVertical="true"
         android:layout_alignRight="@+id/artist_name"
         android:layout_alignEnd="@+id/artist_name" />
@@ -98,14 +109,25 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Spinner
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/artist_name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="464dp"
+        android:layout_marginStart="464dp"
+        android:id="@+id/frameLayout"></FrameLayout>
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/albumspinner"
+        android:text="Add Songs"
+        android:id="@+id/addSongsToAlbum"
         android:layout_below="@+id/createAlbum"
-        android:layout_toLeftOf="@+id/set_date"
-        android:layout_toStartOf="@+id/set_date"
-        android:spinnerMode="dropdown" />
+        android:layout_alignRight="@+id/createAlbum"
+        android:layout_alignEnd="@+id/createAlbum"
+        android:onClick="goCreateSongPage"/>
 
 
 </RelativeLayout>

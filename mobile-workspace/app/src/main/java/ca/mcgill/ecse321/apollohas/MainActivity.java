@@ -31,7 +31,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public void goAddAlbumPage(View v) {
         Button button =(Button) v;
-        startActivity(new Intent(getApplicationContext(), AddAlbumActivity.class ));
+        startActivity(new Intent(getApplicationContext(), DisplayMyAlbums.class));
+    }
+
+    public void goCreateSongPage(View v) {
+        Button button =(Button) v;
+        startActivity(new Intent(getApplicationContext(), CreateSong.class ));
     }
 
     @Override

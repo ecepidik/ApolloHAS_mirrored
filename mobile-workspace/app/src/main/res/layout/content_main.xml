@@ -18,7 +18,8 @@
         android:layout_width="119dp"
         android:layout_height="wrap_content"
         android:text="@string/mySongs_button"
-        android:id="@+id/button" />
+        android:id="@+id/button"
+        android:onClick="goCreateSongPage"/>
 
     <Button
         android:layout_height="wrap_content"

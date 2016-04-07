@@ -2,14 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="ca.mcgill.ecse321.apollohas.AddSongToAlbum">
+    tools:context=".CreateSong">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text=" "
+        android:textColor="#262078"
+        android:id="@+id/error"
+        android:layout_alignTop="@+id/new_song"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,6 +33,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,7 +44,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:text="Name"
-        android:clickable="false" />
+        android:clickable="false"
+        android:editable="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -57,7 +69,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/genre"
-        android:layout_alignEnd="@+id/genre" />
+        android:layout_alignEnd="@+id/genre"
+        android:textIsSelectable="false" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -70,36 +83,35 @@
         android:layout_alignRight="@+id/duration"
         android:layout_alignEnd="@+id/duration" />
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Albums"/>
+
+        <Spinner
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="end"
+            android:id="@+id/albumspinner"/>
+    </LinearLayout>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Song"
         android:id="@+id/addSong"
-        android:onClick="addSong"
+        android:onClick="createSong"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="94dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/song_artist_name"
-        android:text="Artist Name"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/track_number"
-        android:layout_alignRight="@+id/track_number"
-        android:layout_alignEnd="@+id/track_number" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/directory"
-        android:text="Directory"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/song_artist_name"
-        android:layout_alignRight="@+id/song_artist_name"
-        android:layout_alignEnd="@+id/song_artist_name"
-        android:inputType="none" />
 </RelativeLayout>
