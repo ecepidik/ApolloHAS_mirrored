@@ -33,6 +33,14 @@
         <activity
             android:name=".DisplaySongs"
             android:label="@string/title_activity_display_songs"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DisplayPlaylistsActivity"
+            android:label="@string/title_activity_display_playlists"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddSongsToPlaylistActivity"
+            android:label="@string/title_activity_add_songs_to_playlist"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

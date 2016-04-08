@@ -9,11 +9,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="ca.mcgill.ecse321.apollohas.CreatePlaylistActivity"
-    tools:showIn="@layout/activity_create_playlist">
+    tools:context="ca.mcgill.ecse321.apollohas.DisplayPlaylistsActivity"
+    tools:showIn="@layout/activity_display_playlists">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
@@ -23,29 +23,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="New Playlist"
-            android:id="@+id/textView4"
+            android:text="Playlists"
+            android:id="@+id/textView3"
+            android:layout_weight="1"
             android:textColor="#880e4f" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText"
-            android:text="Name" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Songs"
-            android:id="@+id/button5"
-            android:backgroundTint="#d2f1ff" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create"
-            android:id="@+id/button4"
-            android:layout_gravity="right" />
+            android:text="New Playlist"
+            android:id="@+id/button3"
+            android:layout_weight="1"/>
     </LinearLayout>
 </RelativeLayout>
-

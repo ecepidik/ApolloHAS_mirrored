@@ -12,4 +12,6 @@
     <string name="title_activity_view_and_add_songs">ViewAndAddSongs</string>
     <string name="title_activity_create_playlist">CreatePlaylistActivity</string>
     <string name="title_activity_display_songs">DisplaySongs</string>
+    <string name="title_activity_display_playlists">DisplayPlaylistsActivity</string>
+    <string name="title_activity_add_songs_to_playlist">AddSongsToPlaylistActivity</string>
 </resources>
