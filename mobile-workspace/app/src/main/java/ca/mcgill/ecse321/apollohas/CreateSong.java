@@ -1,11 +1,13 @@
 package ca.mcgill.ecse321.apollohas;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -24,34 +26,14 @@ public class CreateSong extends AppCompatActivity {
     private HashMap<Integer, Artist> artists;
     private HashMap<Integer, Song> songs;
     private ArrayList<Song> albumSongs;
-//    private Artist artist;
-//    private Album album;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_create_song);
-//        Artist artist = (Artist)getIntent().getSerializableExtra(CreateAlbum.SER_KEY);
-//        Album album = (Album)getIntent().getSerializableExtra(CreateAlbum.SER_KEY);
-//        this.artist = artist;
-//        this.album = album;
         loadAlbums();
     }
 
-//    private void refreshData() {
-//        HAS manager = HAS.getInstance();
-//
-//        ApolloHASAlbumController ac = new ApolloHASAlbumController();
-//
-//        this.songs = new HashMap<Integer, Song>();
-//        int i = 0;
-//        for (Iterator<Song> songs = manager.getSong().iterator(); songs.hasNext(); i++) {
-//            Song song = songs.next();
-//            this.songs.put(i, song);
-//            ac.addSongToAlbum(song, this.album);
-//
-//        }
-//    }
 
     private void loadAlbums() {
         //Initialize the data in the participant spinner
@@ -115,8 +97,7 @@ public class CreateSong extends AppCompatActivity {
         TextView errorMessage = (TextView) findViewById(R.id.error);
         errorMessage.setText("");
 
-        PersistenceHAS phas = new PersistenceHAS();
-        phas.loadApolloHASModel();
+        PersistenceHAS.loadApolloHASModel();
 
         final HAS hs = HAS.getInstance();
         controllerCreateObjects cco = new controllerCreateObjects();
@@ -138,7 +119,7 @@ public class CreateSong extends AppCompatActivity {
         Genre genre = new Genre(tvGenre.getText().toString());
         List<Genre> genres = hs.getGenres();
 
-        if(genres.contains(genre) == false) {
+        if(!genres.contains(genre)) {
             try {
                 cco.createGenre(tvGenre.getText().toString());
             } catch (InvalidInputException e) {
@@ -170,5 +151,9 @@ public class CreateSong extends AppCompatActivity {
         tvDuration.setText("");
         tvGenre.setText("");
         tvSongName.setText("");
+    }
+    public void goCreateAlbumPage(View v) {
+        Button button = (Button) v;
+        startActivity(new Intent(getApplicationContext(), CreateAlbum.class));
     }
 }

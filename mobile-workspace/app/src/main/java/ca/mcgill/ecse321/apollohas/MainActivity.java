@@ -29,9 +29,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void goAddAlbumPage(View v) {
+
+    public void goDisplayAlbumPage(View v) {
         Button button =(Button) v;
-        startActivity(new Intent(getApplicationContext(), CreateAlbum.class));
+        startActivity(new Intent(getApplicationContext(), DisplayAlbums.class));
     }
 
     public void goCreateSongPage(View v) {

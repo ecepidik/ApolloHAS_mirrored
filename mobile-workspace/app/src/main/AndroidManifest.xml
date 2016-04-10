@@ -23,10 +23,6 @@
         <!-- android:label="@string/title_activity_add_song_to_album" -->
         <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
         <activity
-            android:name=".ViewAndAddSongs"
-            android:label="@string/title_activity_view_and_add_songs"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".CreatePlaylistActivity"
             android:label="@string/title_activity_create_playlist"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -37,7 +33,11 @@
         <activity
             android:name=".DisplayAlbums"
             android:label="@string/title_activity_display_albums"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DisplayPlaylistsActivity"
+            android:label="My Playlists"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

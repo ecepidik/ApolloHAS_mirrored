@@ -13,4 +13,6 @@
     <string name="title_activity_create_playlist">CreatePlaylistActivity</string>
     <string name="title_activity_display_songs">DisplaySongs</string>
     <string name="title_activity_display_albums">DisplayAlbums</string>
+    <string name="title_activity_create_album2">CreateAlbum</string>
+    <string name="title_activity_display_playlists">DisplayPlaylists</string>
 </resources>

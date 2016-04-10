@@ -28,44 +28,14 @@ import ca.mcgill.ecse321.HASDesktop.persistence.PersistenceHAS;
 
 public class CreateAlbum extends AppCompatActivity {
 
-    public  final static String SER_KEY = "com.easyinfogeek.objectPass.ser";
-
     private HashMap<Integer, Album> albums;
     private HashMap<String, Artist> artists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_album);
-
+        setContentView(R.layout.content_create_album);
     }
-
-
-//    private void refreshData() {
-//        HAS manager = HAS.getInstance();
-//        Spinner spinnerAlbum = (Spinner) findViewById(R.id.albumspinner);
-//        ArrayAdapter<CharSequence> albumAdapter = new
-//                ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
-//        albumAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//
-//        this.albums = new HashMap<Integer, Album>();
-//        int i = 0;
-//        for (Iterator<Album> albums = manager.getAlbum().iterator(); albums.hasNext(); i++) {
-//            Album album = albums.next();
-//            albumAdapter.add(album.getName());
-//            this.albums.put(i, album);
-//        }
-//        spinnerAlbum.setAdapter(albumAdapter);
-//
-//        this.artists = new HashMap<String, Artist>();
-//        int k = 0;
-//        for (Iterator<Artist> artists = manager.getArtist().iterator(); artists.hasNext(); i++) {
-//            Artist artist = artists.next();
-////            artistAdapter.add(artist.getName());
-//            this.artists.put(k, artist);
-//        }
-//        //spinnerAlbum.setAdapter(albumAdapter);
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -88,26 +58,6 @@ public class CreateAlbum extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-//    public void displayAlbums(View v) {
-//            //Initialize the data in the participant spinner
-//            RegistrationManager rm = RegistrationManager.getInstance();
-//            Spinner spinnerParticipant = (Spinner) findViewById(R.id.participantspinner);
-//            ArrayAdapter<CharSequence> participantAdapter = new
-//                    ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
-//            participantAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//            this.participants = new HashMap<Integer, Participant>();
-//            //this.participants = new HashMap<String, Participant>();
-//            int i = 0;
-//
-//            for (Iterator<Participant> participants = rm.getParticipants().iterator(); participants.hasNext(); i++) {
-//                Participant p = participants.next();
-//                participantAdapter.add(p.getName());
-//                this.participants.put(i, p);
-//                //this.participants.put(p.getName(), p);
-//            }
-//            spinnerParticipant.setAdapter(participantAdapter);
-//    }
 
     public void createAlbum(View v) {
         PersistenceHAS phas = new PersistenceHAS();
@@ -140,17 +90,31 @@ public class CreateAlbum extends AppCompatActivity {
         Date releaseDate = unbundleDateBundle(getDateFromLabel(tvReleaseDate.getText()));
 
         TextView tvNumSongs = (TextView) findViewById(R.id.num_songs);
-        String num_songs = tvNumSongs.toString();
+        int num_songs = 0;
+        try {
+            num_songs = Integer.parseInt(tvNumSongs.getText().toString());
+        } catch (NumberFormatException e) {
+            errorMessage.setText("number error");
+        }
 
         try {
-            cco.createAlbum(albumName, artist, releaseDate, "10");
+            cco.createAlbum(albumName, artist, releaseDate, String.valueOf(num_songs));
         } catch (InvalidInputException e) {
             errorMessage.setText(e.getMessage());
         }
+        tvAlbumName.setText("");
+        tvArtistName.setText("");
+        tvNumSongs.setText("");
+
     }
 
     public void goCreateSongPage(View v) {
         Intent intent = new Intent(getApplicationContext(), CreateSong.class);
+        startActivity(intent);
+    }
+
+    public void goDisplayAlbumPage(View v) {
+        Intent intent = new Intent(getApplicationContext(), DisplayAlbums.class);
         startActivity(intent);
     }
 

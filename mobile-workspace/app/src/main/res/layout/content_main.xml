@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_width="118dp"
         android:text="@string/myAlbum_button"
-        android:onClick="goAddAlbumPage" />
+        android:onClick="goDisplayAlbumPage" />
 
     <Button
         android:layout_width="wrap_content"
