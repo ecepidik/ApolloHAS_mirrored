@@ -26,7 +26,7 @@ import ca.mcgill.ecse321.HASDesktop.model.*;
 import ca.mcgill.ecse321.HASDesktop.controller.*;
 import ca.mcgill.ecse321.HASDesktop.persistence.PersistenceHAS;
 
-public class DisplayMyAlbums extends AppCompatActivity {
+public class CreateAlbum extends AppCompatActivity {
 
     public  final static String SER_KEY = "com.easyinfogeek.objectPass.ser";
 
@@ -148,14 +148,11 @@ public class DisplayMyAlbums extends AppCompatActivity {
             errorMessage.setText(e.getMessage());
         }
     }
-//
-//    public void goCreateSongPage(View v) {
-//        Intent intent = new Intent(getApplicationContext(), CreateSong.class);
-//       // Bundle mBundle = new Bundle();
-//       // mBundle.putSerializable("album",  (Serializable) album);
-//       // intent.putExtras(mBundle);
-//        startActivity(intent);
-//    }
+
+    public void goCreateSongPage(View v) {
+        Intent intent = new Intent(getApplicationContext(), CreateSong.class);
+        startActivity(intent);
+    }
 
     public void showDatePickerDialog(View v) {
         TextView tf = (TextView) v;

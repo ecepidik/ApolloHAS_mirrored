@@ -30,9 +30,9 @@ public class CreateSong extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_add_song_to_album);
-//        Artist artist = (Artist)getIntent().getSerializableExtra(DisplayMyAlbums.SER_KEY);
-//        Album album = (Album)getIntent().getSerializableExtra(DisplayMyAlbums.SER_KEY);
+        setContentView(R.layout.content_create_song);
+//        Artist artist = (Artist)getIntent().getSerializableExtra(CreateAlbum.SER_KEY);
+//        Album album = (Album)getIntent().getSerializableExtra(CreateAlbum.SER_KEY);
 //        this.artist = artist;
 //        this.album = album;
         loadAlbums();
@@ -145,7 +145,7 @@ public class CreateSong extends AppCompatActivity {
                 errorMessage.setText(e.getMessage());
            }
         }
-//
+
         TextView tvTrackNumber = (TextView) findViewById(R.id.track_number);
         int trackNumber = 0;
         try {
@@ -155,10 +155,20 @@ public class CreateSong extends AppCompatActivity {
             errorMessage.setText(e.getMessage());
         }
 
+        Spinner sAlbum = (Spinner) findViewById(R.id.albumspinner);
+        Album assignAlbum = albums.get(sAlbum.getSelectedItemPosition());
+
        try {
-           cco.createSong(songName, duration, trackNumber, new Genre("Rap"));
+           cco.createSong(songName, duration, trackNumber, genre);
+           controllerAddsAssociations caa = new controllerAddsAssociations();
+           caa.addSongToAlbum(assignAlbum, cco.getSong());
+
         } catch (InvalidInputException e) {
             errorMessage.setText(e.getMessage());
         }
+        tvTrackNumber.setText("");
+        tvDuration.setText("");
+        tvGenre.setText("");
+        tvSongName.setText("");
     }
 }

@@ -31,12 +31,22 @@ public class MainActivity extends AppCompatActivity {
     }
     public void goAddAlbumPage(View v) {
         Button button =(Button) v;
-        startActivity(new Intent(getApplicationContext(), DisplayMyAlbums.class));
+        startActivity(new Intent(getApplicationContext(), CreateAlbum.class));
     }
 
     public void goCreateSongPage(View v) {
         Button button =(Button) v;
         startActivity(new Intent(getApplicationContext(), CreateSong.class ));
+    }
+
+    public void goDisplaySongPage(View v) {
+        Button button =(Button) v;
+        startActivity(new Intent(getApplicationContext(), DisplaySongs.class ));
+    }
+
+    public void goDisplayPlaylistPage(View v) {
+        Button button =(Button) v;
+        startActivity(new Intent(getApplicationContext(), DisplayPlaylistsActivity.class ));
     }
 
     @Override

@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DisplayMyAlbums" />
+        <activity android:name=".CreateAlbum" />
         <activity android:name=".CreateSong" />
         <!-- android:label="@string/title_activity_add_song_to_album" -->
         <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
@@ -35,12 +35,8 @@
             android:label="@string/title_activity_display_songs"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".DisplayPlaylistsActivity"
-            android:label="@string/title_activity_display_playlists"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".AddSongsToPlaylistActivity"
-            android:label="@string/title_activity_add_songs_to_playlist"
+            android:name=".DisplayAlbums"
+            android:label="@string/title_activity_display_albums"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

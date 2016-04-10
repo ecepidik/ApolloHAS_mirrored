@@ -30,7 +30,7 @@ public class DatePickerFragment extends DialogFragment
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        DisplayMyAlbums myActivity = (DisplayMyAlbums)getActivity();
+        CreateAlbum myActivity = (CreateAlbum)getActivity();
         myActivity.setDate(getArguments().getInt("id"), day, month, year);
     }
 }

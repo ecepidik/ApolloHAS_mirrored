@@ -8,6 +8,7 @@ import ca.mcgill.ecse321.HASDesktop.model.Player;
 import ca.mcgill.ecse321.HASDesktop.model.Playlist;
 import ca.mcgill.ecse321.HASDesktop.model.Room;
 import ca.mcgill.ecse321.HASDesktop.model.Song;
+import ca.mcgill.ecse321.HASDesktop.persistence.PersistenceHAS;
 import ca.mcgill.ecse321.HASDesktop.persistence.PersistenceXStream;
 
 public class controllerAddsAssociations {
@@ -165,5 +166,16 @@ public class controllerAddsAssociations {
 		manager.addPlayer(p);
 
 		PersistenceXStream.saveToXMLwithXStream(manager);
+	}
+	public Album getAlbumCorrespondingToSong(Song song, Album album) {
+		PersistenceHAS.loadApolloHASModel();
+		HAS manager = HAS.getInstance();
+		
+		for(int i = 0; i < album.getSongs().size(); i++) {
+			if (album.getSong(i) == song) {
+				return album;
+			}
+		}
+		return null;
 	}
 }

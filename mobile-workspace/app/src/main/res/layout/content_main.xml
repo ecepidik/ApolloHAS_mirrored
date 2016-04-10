@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="@string/mySongs_button"
         android:id="@+id/button"
-        android:onClick="goCreateSongPage"/>
+        android:onClick="goDisplaySongPage"/>
 
     <Button
         android:layout_height="wrap_content"
@@ -31,7 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My Playlists"
-        android:id="@+id/button2" />
+        android:id="@+id/button2"
+        android:onClick="goDisplayPlaylistPage"/>
 
     //Add Album is in the first layout layer
 

@@ -7,16 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import ca.mcgill.ecse321.HASDesktop.controller.InvalidInputException;
 import ca.mcgill.ecse321.HASDesktop.model.*;
-import ca.mcgill.ecse321.HASDesktop.persistence.*;
 
 public class ViewAndAddSongs extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_and_add_songs);
+        setContentView(R.layout.activity_create_song);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
