@@ -138,10 +138,9 @@
         android:layout_height="wrap_content"
         android:text="Back"
         android:id="@+id/button7"
+        android:onClick="goDisplayAlbumPage"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="76dp"
-        android:onClick="goDisplayAlbumPage"/>
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
