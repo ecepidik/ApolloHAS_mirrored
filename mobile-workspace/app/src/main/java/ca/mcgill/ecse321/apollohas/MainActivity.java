@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void goDisplayPlaylistPage(View v) {
         Button button =(Button) v;
-        startActivity(new Intent(getApplicationContext(), DisplayPlaylistsActivity.class ));
+        startActivity(new Intent(getApplicationContext(), DisplayPlaylists.class ));
     }
 
     @Override

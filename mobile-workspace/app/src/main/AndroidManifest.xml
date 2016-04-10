@@ -27,7 +27,7 @@
             android:label="@string/title_activity_view_and_add_songs"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CreatePlaylistActivity"
+            android:name=".CreatePlaylist"
             android:label="@string/title_activity_create_playlist"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -35,9 +35,13 @@
             android:label="@string/title_activity_display_songs"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".DisplayPlaylists"
+            android:label="@string/title_activity_display_playlists"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".DisplayAlbums"
             android:label="@string/title_activity_display_albums"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
