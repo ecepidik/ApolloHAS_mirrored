@@ -1,5 +1,6 @@
 package ca.mcgill.ecse321.apollohas;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -40,6 +42,11 @@ public class DisplayPlaylistsActivity extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.listView2);
         listView.setAdapter(playlistAdapter);
+    }
+
+    public void goCreatePlaylistPage(View v) {
+        Button button = (Button) v;
+        startActivity(new Intent(getApplicationContext(), CreatePlaylistActivity.class));
     }
 
 }
