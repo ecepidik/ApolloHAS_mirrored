@@ -38,6 +38,10 @@
             android:name=".DisplayPlaylistsActivity"
             android:label="@string/title_activity_display_playlists"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddSongsToPlaylist"
+            android:label="@string/title_activity_add_songs_to_playlist"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

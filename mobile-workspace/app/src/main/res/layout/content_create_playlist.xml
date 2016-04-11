@@ -38,7 +38,8 @@
             android:layout_height="wrap_content"
             android:text="Add Songs"
             android:id="@+id/button5"
-            android:backgroundTint="#d2f1ff" />
+            android:backgroundTint="#d2f1ff"
+            android:onClick="goAddSongsToPlaylistPage"/>
 
         <Button
             android:layout_width="wrap_content"
