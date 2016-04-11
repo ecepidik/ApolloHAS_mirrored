@@ -36,7 +36,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DisplayPlaylistsActivity"
-            android:label="My Playlists"
+            android:label="@string/title_activity_display_playlists"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

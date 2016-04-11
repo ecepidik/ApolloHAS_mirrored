@@ -50,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), DisplayPlaylistsActivity.class ));
     }
 
+    public void goCreatePlaylistPage(View v) {
+        Button button = (Button) v;
+        startActivity(new Intent(getApplicationContext(), CreatePlaylistActivity.class ));
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

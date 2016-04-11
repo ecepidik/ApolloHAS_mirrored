@@ -15,4 +15,7 @@
     <string name="title_activity_display_albums">DisplayAlbums</string>
     <string name="title_activity_create_album2">CreateAlbum</string>
     <string name="title_activity_display_playlists">DisplayPlaylists</string>
+    <string name="myPlaylists_text">Playlists</string>
+    <string name="newPlaylist_Button">New Playlist</string>
+    <string name="myPlaylists_Button">My Playlists</string>
 </resources>
