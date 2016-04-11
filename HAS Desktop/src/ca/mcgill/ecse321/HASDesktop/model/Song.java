@@ -110,11 +110,6 @@ public class Song implements Serializable
   public String toString()
   {
 	  String outputString = "";
-    return super.toString() + "["+
-            "name" + ":" + getName()+ "," +
-            "duration" + ":" + getDuration()+ "," +
-            "trackNum" + ":" + getTrackNum()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "genre = "+(getGenre()!=null?Integer.toHexString(System.identityHashCode(getGenre())):"null")
-     + outputString;
+    return this.getName();
   }
 }

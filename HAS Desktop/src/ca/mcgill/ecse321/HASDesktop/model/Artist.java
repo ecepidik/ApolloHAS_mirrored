@@ -168,8 +168,6 @@ public class Artist implements Serializable
   public String toString()
   {
 	  String outputString = "";
-    return super.toString() + "["+
-            "name" + ":" + getName()+ "]"
-     + outputString;
+    return this.getName();
   }
 }

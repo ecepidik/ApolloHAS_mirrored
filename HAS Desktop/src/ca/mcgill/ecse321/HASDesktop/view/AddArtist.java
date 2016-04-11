@@ -43,25 +43,31 @@ public class AddArtist extends JFrame {
 	 * Create the frame.
 	 */
 	public AddArtist() {
+		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 184);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(4, 4, 25));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblArtistName = new JLabel("Artist Name");
+		lblArtistName.setForeground(new Color(255, 255, 255));
 		lblArtistName.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblArtistName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblArtistName.setBounds(15, 16, 398, 20);
 		contentPane.add(lblArtistName);
 		
 		artTxtField = new JTextField();
-		artTxtField.setBounds(15, 52, 398, 26);
+		artTxtField.setBounds(15, 68, 398, 26);
 		contentPane.add(artTxtField);
 		artTxtField.setColumns(10);
 		
 		final JLabel lblCreateArtist = new JLabel("Create Artist");
+		lblCreateArtist.setBackground(new Color(0, 0, 0));
+		lblCreateArtist.setOpaque(true);
+		lblCreateArtist.setForeground(new Color(255, 255, 255));
 		lblCreateArtist.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -74,8 +80,8 @@ public class AddArtist extends JFrame {
 			public void mouseReleased(MouseEvent arg0) {
 				controllerCreateObjects cco = new controllerCreateObjects();
 				try {
-					cco.createArtist(artTxtField.getText());
 					dispose();
+					cco.createArtist(artTxtField.getText());
 				} catch (InvalidInputException e) {
 					error.setup(e.getMessage());
 				}
@@ -85,7 +91,7 @@ public class AddArtist extends JFrame {
 		});
 		lblCreateArtist.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblCreateArtist.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCreateArtist.setBounds(0, 94, 428, 34);
+		lblCreateArtist.setBounds(0, 110, 450, 74);
 		contentPane.add(lblCreateArtist);
 	}
 }

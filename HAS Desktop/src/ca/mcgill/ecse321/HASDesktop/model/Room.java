@@ -85,10 +85,6 @@ public class Room implements Serializable
   public String toString()
   {
 	  String outputString = "";
-    return super.toString() + "["+
-            "name" + ":" + getName()+ "," +
-            "volume" + ":" + getVolume()+ "," +
-            "mute" + ":" + getMute()+ "]"
-     + outputString;
+    return this.getName();
   }
 }

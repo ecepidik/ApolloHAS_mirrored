@@ -1,6 +1,7 @@
 package ca.mcgill.ecse321.HASDesktop.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -26,6 +27,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
 import java.awt.Component;
 import javax.swing.Box;
+import java.awt.Font;
 
 public class AddPlaylist extends JFrame {
 
@@ -56,16 +58,23 @@ public class AddPlaylist extends JFrame {
 		setBounds(100, 100, 450, 365);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBackground(new Color(4,4,25));
 		setContentPane(contentPane);
 
 		final HAS hs = HAS.getInstance();
 
 		JLabel lblChooseSongs = new JLabel("Choose Songs");
+		lblChooseSongs.setForeground(new Color(255, 255, 255));
+		lblChooseSongs.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblChooseSongs.setBounds(20, 176, 388, 20);
 		lblChooseSongs.setHorizontalAlignment(SwingConstants.CENTER);
 
-		JLabel lblAddSong = new JLabel("Add Song to Playlist");
-		lblAddSong.setBounds(20, 240, 403, 64);
+		final JLabel lblAddSong = new JLabel("Add Song to Playlist");
+		lblAddSong.setBackground(new Color(0, 0, 0));
+		lblAddSong.setOpaque(true);
+		lblAddSong.setFont(new Font("Tahoma", Font.BOLD, 23));
+		lblAddSong.setForeground(new Color(255, 255, 255));
+		lblAddSong.setBounds(0, 240, 428, 69);
 	
 		lblAddSong.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -81,10 +90,16 @@ public class AddPlaylist extends JFrame {
 		playlistName.setColumns(10);
 
 		JLabel lblPlaylistName = new JLabel("PlayList Name");
+		lblPlaylistName.setForeground(new Color(255, 255, 255));
+		lblPlaylistName.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblPlaylistName.setBounds(20, 16, 190, 20);
 
-		JLabel lblCreatePlaylist = new JLabel("Create Playlist");
-		lblCreatePlaylist.setBounds(20, 48, 388, 55);
+		final JLabel lblCreatePlaylist = new JLabel("Create Playlist");
+		lblCreatePlaylist.setBackground(new Color(0, 0, 0));
+		lblCreatePlaylist.setOpaque(true);
+		lblCreatePlaylist.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblCreatePlaylist.setForeground(new Color(255, 255, 255));
+		lblCreatePlaylist.setBounds(0, 48, 428, 55);
 
 		final JComboBox<Playlist> playlistComboBox = new JComboBox();
 		playlistComboBox.setBounds(20, 134, 388, 26);
@@ -105,6 +120,15 @@ public class AddPlaylist extends JFrame {
 				} catch (InvalidInputException e) {
 					error.setup(e.getMessage());
 				}
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			lblCreatePlaylist.setBackground(Color.LIGHT_GRAY.darker());
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+			lblCreatePlaylist.setBackground(Color.BLACK);
 			}
 		});
 
@@ -129,6 +153,14 @@ public class AddPlaylist extends JFrame {
 				} catch (InvalidInputException e1){
 					error.setup(e1.getMessage());
 				}
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblAddSong.setBackground(Color.LIGHT_GRAY.darker());
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblAddSong.setBackground(Color.BLACK);
 			}
 		});
 		
