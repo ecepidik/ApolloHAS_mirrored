@@ -1,43 +1,84 @@
 <HAS id="1">
-  <players id="2"/>
-  <rooms id="3"/>
-  <songs id="4">
-    <song id="5">
-      <name>What</name>
-      <duration>60</duration>
-      <trackNum>3</trackNum>
-      <genre id="6">
-        <name>Rap</name>
-      </genre>
-    </song>
-    <song id="7">
-      <name>Compton life</name>
-      <duration>60</duration>
-      <trackNum>3</trackNum>
-      <genre id="8">
+  <players id="2">
+    <player id="3">
+      <songs id="4">
+        <song id="5">
+          <name>I just had swag</name>
+          <duration>60</duration>
+          <trackNum>8</trackNum>
+          <genre id="6">
+            <name>Rap</name>
+          </genre>
+        </song>
+      </songs>
+      <rooms id="7">
+        <room id="8">
+          <name>Living</name>
+          <volume>66</volume>
+          <mute>true</mute>
+        </room>
+      </rooms>
+      <albums id="9">
+        <album id="10">
+          <name>Swaggity Swoo</name>
+          <releaseDate id="11">2016-04-01</releaseDate>
+          <songs id="12">
+            <song id="13">
+              <name>Swolo</name>
+              <duration>60</duration>
+              <trackNum>6</trackNum>
+              <genre id="14">
+                <name>Rap</name>
+              </genre>
+            </song>
+            <song reference="5"/>
+          </songs>
+          <artist id="15">
+            <name>Swagy McSwagger</name>
+            <albums id="16">
+              <album reference="10"/>
+            </albums>
+          </artist>
+        </album>
+      </albums>
+      <playlists id="17">
+        <playlist id="18">
+          <name>I Sawgged in my box</name>
+          <songs id="19">
+            <song reference="5"/>
+            <song reference="13"/>
+          </songs>
+        </playlist>
+      </playlists>
+    </player>
+  </players>
+  <rooms id="20">
+    <room reference="8"/>
+  </rooms>
+  <songs id="21">
+    <song reference="13"/>
+    <song reference="5"/>
+    <song id="22">
+      <name>Its my Swag in a box</name>
+      <duration>100</duration>
+      <trackNum>10</trackNum>
+      <genre id="23">
         <name>Rap</name>
       </genre>
     </song>
   </songs>
-  <albums id="9">
-    <album id="10">
-      <name>Ece is getting sick of her best 100</name>
-      <releaseDate id="11">2016-03-03</releaseDate>
-      <songs id="12">
-        <song reference="5"/>
-        <song reference="7"/>
-      </songs>
-      <artist id="13">
-        <name>Ece</name>
-        <albums id="14">
-          <album reference="10"/>
-        </albums>
-      </artist>
-    </album>
+  <albums id="24">
+    <album reference="10"/>
   </albums>
-  <playlists id="15"/>
-  <artists id="16">
-    <artist reference="13"/>
+  <playlists id="25">
+    <playlist reference="18"/>
+    <playlist id="26">
+      <name>I Sawgged in my box</name>
+      <songs id="27"/>
+    </playlist>
+  </playlists>
+  <artists id="28">
+    <artist reference="15"/>
   </artists>
-  <genres id="17"/>
+  <genres id="29"/>
 </HAS>

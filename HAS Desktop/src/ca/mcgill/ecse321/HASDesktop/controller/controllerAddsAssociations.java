@@ -8,7 +8,6 @@ import ca.mcgill.ecse321.HASDesktop.model.Player;
 import ca.mcgill.ecse321.HASDesktop.model.Playlist;
 import ca.mcgill.ecse321.HASDesktop.model.Room;
 import ca.mcgill.ecse321.HASDesktop.model.Song;
-import ca.mcgill.ecse321.HASDesktop.persistence.PersistenceHAS;
 import ca.mcgill.ecse321.HASDesktop.persistence.PersistenceXStream;
 
 public class controllerAddsAssociations {
@@ -97,13 +96,12 @@ public class controllerAddsAssociations {
 		PersistenceXStream.saveToXMLwithXStream(manager);
 	}
 	
-	public void connectAlbumToRoom(Room room, Album album) throws InvalidInputException {
+	
+	public Player connectAlbumToPlayer(Player player, Album album) throws InvalidInputException {
 		HAS manager = HAS.getInstance();
 		String error = "";
-		if(room == null)
-			error = error + "Room needs to exist! ";
-		else if(!manager.getRooms().contains(room))
-			error = error + "Room does not exist! ";
+		if(player == null)
+			error = error + "Player needs to exist! ";
 		if(album == null)
 			error = error + "Album needs to be selected!";
 		else if(!manager.getAlbums().contains(album))
@@ -113,21 +111,18 @@ public class controllerAddsAssociations {
 		if(error.length() > 0)
 			throw new  InvalidInputException(error);
 		
-		Player p = new Player();
-		p.addRoom(room);
-		p.addAlbum(album);
-		manager.addPlayer(p);
-
+		player.addAlbum(album);
+		manager.addPlayer(player);
+		
 		PersistenceXStream.saveToXMLwithXStream(manager);
+		return player;
 	}
 	
-	public void connectSongToRoom(Room room, Song song) throws InvalidInputException {
+	public Player connectSongToPlayer(Player player, Song song) throws InvalidInputException {
 		HAS manager = HAS.getInstance();
 		String error = "";
-		if(room == null)
-			error = error + "Room needs to exist! ";
-		else if(!manager.getRooms().contains(room))
-			error = error + "Room does not exist! ";
+		if(player == null)
+			error = error + "Player needs to exist! ";
 		if(song == null)
 			error = error + "Song needs to be selected!";
 		else if(!manager.getSongs().contains(song))
@@ -137,20 +132,20 @@ public class controllerAddsAssociations {
 		if(error.length() > 0)
 			throw new  InvalidInputException(error);
 		
-		Player p = new Player();
-		p.addRoom(room);
-		p.addSong(song);
-		manager.addPlayer(p);
+
+		player.addSong(song);
+		manager.addPlayer(player);
 
 		PersistenceXStream.saveToXMLwithXStream(manager);
+		return player;
 	}
-	public void connectPlaylistToRoom(Room room, Playlist playlist) throws InvalidInputException {
+	public Player connectPlaylistToPlayer(Player player, Playlist playlist) throws InvalidInputException {
+		
 		HAS manager = HAS.getInstance();
 		String error = "";
-		if(room == null)
-			error = error + "Room needs to exist! ";
-		else if(!manager.getRooms().contains(room))
-			error = error + "Room does not exist! ";
+		
+		if(player == null)
+			error = error + "Player needs to exist! ";
 		if(playlist == null)
 			error = error + "Playlist needs to be selected!";
 		else if(!manager.getPlaylists().contains(playlist))
@@ -160,22 +155,28 @@ public class controllerAddsAssociations {
 		if(error.length() > 0)
 			throw new  InvalidInputException(error);
 		
-		Player p = new Player();
-		p.addRoom(room);
-		p.addPlaylist(playlist);
-		manager.addPlayer(p);
+	
+		player.addPlaylist(playlist);
+		manager.addPlayer(player);
 
 		PersistenceXStream.saveToXMLwithXStream(manager);
+		return player;
 	}
-	public Album getAlbumCorrespondingToSong(Song song, Album album) {
-		PersistenceHAS.loadApolloHASModel();
+	public Player connectRoomToPlayer(Player p, Room r){
 		HAS manager = HAS.getInstance();
+		String error = "";
 		
-		for(int i = 0; i < album.getSongs().size(); i++) {
-			if (album.getSong(i) == song) {
-				return album;
-			}
-		}
-		return null;
+		if(p == null)
+			error = error + "Player needs to exist! ";
+		if(r == null)
+			error = error + "Room needs to be selected!";
+		else if(!manager.getPlaylists().contains(r))
+			error = error + "Room needs to be selected!";
+		error = error.trim();
+		
+		p.addRoom(r);
+		manager.addPlayer(p);
+		PersistenceXStream.saveToXMLwithXStream(manager);
+		return p;
 	}
 }

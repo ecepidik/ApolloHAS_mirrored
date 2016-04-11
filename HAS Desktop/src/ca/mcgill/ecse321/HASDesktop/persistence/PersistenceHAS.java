@@ -47,7 +47,7 @@ public class PersistenceHAS {
 			
 			Iterator<Player> playerIt = has2.getPlayers().iterator();
 			while(playerIt.hasNext())
-				has.addPlaylist(playListIt.next());
+				has.addPlayer(playerIt.next());
 			
 			Iterator<Room> roomIt = has2.getRooms().iterator();
 			while(roomIt.hasNext())

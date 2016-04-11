@@ -12,6 +12,7 @@ import java.sql.Date;
 
 import ca.mcgill.ecse321.HASDesktop.model.Album;
 import ca.mcgill.ecse321.HASDesktop.model.HAS;
+import ca.mcgill.ecse321.HASDesktop.model.Player;
 import ca.mcgill.ecse321.HASDesktop.model.Playlist;
 import ca.mcgill.ecse321.HASDesktop.model.Room;
 import ca.mcgill.ecse321.HASDesktop.model.Song;
@@ -164,6 +165,14 @@ public class controllerCreateObjects {
 		hs.addGenre(genre);
 		PersistenceXStream.saveToXMLwithXStream(hs);
 
+	}
+	
+	public Player createPlayer() {
+		Player p = new Player();
+		HAS hs= HAS.getInstance();
+		hs.addPlayer(p);
+		PersistenceXStream.saveToXMLwithXStream(hs);
+		return p;
 	}
 	public Album getAlbum(){
 		return this.album;
