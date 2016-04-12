@@ -72,26 +72,16 @@
         android:layout_alignEnd="@+id/artist_name"
         android:textColor="#FF757575" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/release_date"
-        android:editable="false"
-        android:text="Release Date"
-        android:textSize="14sp"
-        android:layout_below="@+id/num_songs"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="mm.dd.yyyy"
+        android:text="@string/release_date"
         android:id="@+id/set_date"
         android:onClick="showDatePickerDialog"
-        android:layout_below="@+id/release_date"
-        android:layout_alignRight="@+id/createAlbum"
-        android:layout_alignEnd="@+id/createAlbum" />
+        android:layout_alignBottom="@+id/release_date"
+        android:layout_alignRight="@+id/num_songs"
+        android:layout_alignEnd="@+id/num_songs" />
 
     <Button
         android:layout_width="wrap_content"
@@ -99,9 +89,9 @@
         android:text="Create Album"
         android:id="@+id/createAlbum"
         android:onClick="createAlbum"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/artist_name"
-        android:layout_alignEnd="@+id/artist_name" />
+        android:layout_below="@+id/release_date"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="122dp" />
 
     <TextView
         android:layout_height="wrap_content"
@@ -109,7 +99,7 @@
         android:text=" "
         android:textColor="#262078"
         android:id="@+id/error"
-        android:layout_alignTop="@+id/createAlbum"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -128,10 +118,9 @@
         android:layout_height="wrap_content"
         android:text="Add Songs"
         android:id="@+id/addSongsToAlbum"
+        android:onClick="goCreateSongPage"
         android:layout_below="@+id/createAlbum"
-        android:layout_alignRight="@+id/createAlbum"
-        android:layout_alignEnd="@+id/createAlbum"
-        android:onClick="goCreateSongPage"/>
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -142,5 +131,19 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/release_date"
+        android:hint="Release Date"
+        android:editable="false"
+        android:textSize="14dp"
+        android:textColor="#FF757575"
+        android:layout_below="@+id/num_songs"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/set_date"
+        android:layout_toStartOf="@+id/set_date" />
 
 </RelativeLayout>

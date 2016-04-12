@@ -74,13 +74,13 @@ public class CreateAlbum extends AppCompatActivity {
 
         //creates an artist while creating an album
         TextView tvArtistName = (TextView) findViewById(R.id.artist_name);
-        Artist artist = new Artist(tvArtistName.toString());
+        Artist artist = new Artist(tvArtistName.getText().toString());
 
         List<Artist> artists = hs.getArtists();
 
         if(artists.contains(artist) == false) {
             try {
-                cco.createArtist(tvArtistName.toString());
+                cco.createArtist(tvArtistName.getText().toString());
             } catch (InvalidInputException e) {
                 errorMessage.setText(e.getMessage());
             }

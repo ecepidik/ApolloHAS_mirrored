@@ -36,8 +36,20 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DisplayPlaylistsActivity"
-            android:label="@string/title_activity_display_playlists"
+            android:label="My Playlists"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CreateRoom"
+            android:label="@string/title_activity_create_room"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DisplayRooms"
+            android:label="@string/title_activity_display_rooms"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddMusicToRoom"
+            android:label="@string/title_activity_add_music_to_room"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
