@@ -8,6 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import ca.mcgill.ecse321.HASDesktop.controller.InvalidInputException;
+import ca.mcgill.ecse321.HASDesktop.controller.controllerCreateObjects;
+import ca.mcgill.ecse321.HASDesktop.model.HAS;
+import ca.mcgill.ecse321.HASDesktop.persistence.PersistenceHAS;
 
 public class CreatePlaylistActivity extends AppCompatActivity {
 
@@ -20,9 +26,26 @@ public class CreatePlaylistActivity extends AppCompatActivity {
 
     }
 
-    public void goAddSongsToPlaylistPage(View v) {
-        Button button = (Button) v;
-        startActivity(new Intent(getApplicationContext(), AddSongsToPlaylist.class));
+    public void createPlaylist(View v) {
+        PersistenceHAS phas = new PersistenceHAS();
+        phas.loadApolloHASModel();
+        final HAS hs = HAS.getInstance();
+
+//        TextView errorMessage = (TextView) findViewById(R.id.error);
+//        errorMessage.setText("");
+
+        controllerCreateObjects cco = new controllerCreateObjects();
+
+        TextView tvPlaylistName = (TextView) findViewById(R.id.editText);
+        String playlistName = tvPlaylistName.getText().toString();
+
+        try {
+            cco.createPlaylist(playlistName);
+        } catch (InvalidInputException e) {
+//            errorMessage.setText(e.getMessage());
+        }
+
+        tvPlaylistName.setText("");
     }
 
 }

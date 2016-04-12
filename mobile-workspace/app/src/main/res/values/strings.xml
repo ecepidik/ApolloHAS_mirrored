@@ -19,4 +19,6 @@
     <string name="newPlaylist_Button">New Playlist</string>
     <string name="myPlaylists_Button">My Playlists</string>
     <string name="title_activity_add_songs_to_playlist">Add Songs To Playlist</string>
+    <string name="choose_song_text">Choose Song</string>
+    <string name="choose_playlist_text">Choose Playlist</string>
 </resources>

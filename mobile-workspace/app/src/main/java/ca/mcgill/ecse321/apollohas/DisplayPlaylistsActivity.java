@@ -38,15 +38,19 @@ public class DisplayPlaylistsActivity extends AppCompatActivity {
             playlistNames.add(playlist.getName());
         }
 
-        ArrayAdapter<String> playlistAdapter = new ArrayAdapter<String>(this, android.R.layout.activity_list_item, playlistNames);
-
-        ListView listView = (ListView) findViewById(R.id.listView2);
+        ArrayAdapter<String> playlistAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, playlistNames);
+        ListView listView = (ListView) findViewById(R.id.playlist_list);
         listView.setAdapter(playlistAdapter);
     }
 
     public void goCreatePlaylistPage(View v) {
         Button button = (Button) v;
         startActivity(new Intent(getApplicationContext(), CreatePlaylistActivity.class));
+    }
+
+    public void goAddSongsToPlaylistPage(View v) {
+        Button button = (Button) v;
+        startActivity(new Intent(getApplicationContext(), AddSongsToPlaylist.class));
     }
 
 }
