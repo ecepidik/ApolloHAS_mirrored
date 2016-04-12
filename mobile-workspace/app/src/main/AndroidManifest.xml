@@ -39,6 +39,7 @@
             android:label="My Playlists"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+<<<<<<< HEAD
             android:name=".CreateRoom"
             android:label="@string/title_activity_create_room"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -50,6 +51,11 @@
             android:name=".AddMusicToRoom"
             android:label="@string/title_activity_add_music_to_room"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+=======
+            android:name=".AddSongsToPlaylist"
+            android:label="@string/title_activity_add_songs_to_playlist"
+            android:theme="@style/AppTheme.NoActionBar" />
+>>>>>>> origin/master
     </application>
 
 </manifest>

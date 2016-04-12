@@ -31,21 +31,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editText"
-            android:text="Name" />
+            android:editable="true"
+            android:hint="Name" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Songs"
-            android:id="@+id/button5"
-            android:backgroundTint="#d2f1ff" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Create"
+            android:text="Create Playlist"
             android:id="@+id/button4"
-            android:layout_gravity="right" />
+            android:onClick="createPlaylist"/>
     </LinearLayout>
 </RelativeLayout>
 

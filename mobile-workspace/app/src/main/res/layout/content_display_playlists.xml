@@ -30,20 +30,36 @@
             android:layout_weight="1"
             android:textColor="#880e4f" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/newPlaylist_Button"
-            android:id="@+id/button3"
-            android:layout_weight="1"
-            android:onClick="goCreatePlaylistPage"/>
     </LinearLayout>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView2"
+        android:id="@+id/playlist_list"
         android:layout_below="@+id/linearLayout2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Song To Playlist"
+        android:id="@+id/button9"
+        android:layout_weight="250"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_alignRight="@+id/linearLayout2"
+        android:layout_alignEnd="@+id/linearLayout2"
+        android:onClick="goAddSongsToPlaylistPage"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/newPlaylist_Button"
+        android:id="@+id/button3"
+        android:layout_weight="1"
+        android:onClick="goCreatePlaylistPage"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
